@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Freethought.me — LLM Consulting, Datasets & Tools</title>
+    <meta name="description" content="Freethought.me — Local-first LLM consulting, dataset curation, and tooling. Practical, fast, and transparent." />
+    <link rel="canonical" href="https://freethought.me/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Freethought.me — LLM Consulting, Datasets & Tools" />
+    <meta property="og:description" content="Local-first LLM consulting, dataset curation, and tooling. Practical, fast, and transparent." />
+    <meta property="og:url" content="https://freethought.me/" />
+    <meta property="og:type" content="website" />
+    <!-- If you add a social image later, update this: -->
+    <meta property="og:image" content="https://freethought.me/og.png" />
+
+    <!-- Theme color (helps on mobile) -->
+    <meta name="theme-color" content="#0ea5e9" />
+
+    <!-- Favicon placeholders (optional) 
+         Replace with your files when ready:
+         <link rel="icon" href="/favicon.ico" sizes="any">
+         <link rel="icon" href="/icon.svg" type="image/svg+xml">
+         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    -->
+
+    <style>
+        :root {
+            --bg: #0b0c10;
+            --panel: #111319;
+            --text: #e6e6e6;
+            --muted: #a3a3a3;
+            --accent: #0ea5e9; /* cyan/sky */
+            --accent-2: #22c55e; /* green */
+            --radius: 16px;
+            --maxw: 1100px;
+        }
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #ffffff;
+                --panel: #f6f7fb;
+                --text: #111827;
+                --muted: #4b5563;
+            }
+        }
+
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            background: radial-gradient(1200px 800px at 80% -10%, rgba(14,165,233,0.12), transparent 60%),
+                        radial-gradient(1000px 700px at 10% -20%, rgba(34,197,94,0.12), transparent 60%),
+                        var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+        /* Skip link for accessibility */
+        .skip {
+            position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+        }
+        .skip:focus {
+            left: 16px; top: 16px; width: auto; height: auto; padding: 8px 12px;
+            background: var(--panel); color: var(--text); border-radius: 8px; outline: 2px solid var(--accent);
+        }
+
+        /* Header */
+        header {
+            position: sticky; top: 0; backdrop-filter: saturate(180%) blur(10px);
+            background: color-mix(in oklab, var(--bg) 85%, transparent);
+            border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+            z-index: 10;
+        }
+        .nav {
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px;
+        }
+        .brand {
+            display: inline-flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.2px;
+        }
+        .logo {
+            width: 32px; height: 32px; display: inline-block;
+        }
+        .nav a {
+            padding: 8px 12px; border-radius: 10px; font-weight: 600; color: var(--muted);
+        }
+        .nav a:hover, .nav a:focus { color: var(--text); background: color-mix(in oklab, var(--panel) 70%, transparent); outline: none; }
+
+        /* Hero */
+        .hero {
+            padding: 72px 0 32px;
+        }
+        .hero-card {
+            background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 60%, transparent), var(--panel));
+            border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+            border-radius: var(--radius);
+            padding: 36px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.1;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.02em;
+        }
+        .tag {
+            display: inline-flex; gap: 10px; align-items: center;
+            font-size: 14px; color: var(--muted);
+        }
+        .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+        .badge {
+            border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+            padding: 6px 10px; border-radius: 999px; font-size: 13px; color: var(--muted);
+        }
+        .cta {
+            display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px;
+        }
+        .btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 12px 16px; border-radius: 12px; font-weight: 700;
+            border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+            background: color-mix(in oklab, var(--panel) 60%, transparent);
+        }
+        .btn.primary { background: var(--accent); color: #001018; border-color: transparent; }
+        .btn.primary:hover { filter: brightness(1.05); }
+        .btn:hover { background: color-mix(in oklab, var(--panel) 90%, transparent); }
+
+        /* Sections */
+        section { padding: 56px 0; }
+        .section-title { font-size: 22px; margin: 0 0 16px 0; letter-spacing: 0.2px; }
+        .grid {
+            display: grid; gap: 16px;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+        }
+        .card {
+            grid-column: span 12;
+            background: var(--panel);
+            border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+        @media (min-width: 720px) {
+            .hero-card { grid-template-columns: 1.2fr 1fr; }
+            .card.half { grid-column: span 6; }
+            .card.third { grid-column: span 4; }
+        }
+        .muted { color: var(--muted); }
+        ul.clean { list-style: none; padding-left: 0; margin: 0; }
+        ul.clean li { padding: 8px 0; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+            padding: 24px 0 56px;
+            color: var(--muted);
+        }
+
+        /* Focus style */
+        :where(a, button, .btn):focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Tiny utility icon style */
+        .ico { width: 1.1em; height: 1.1em; vertical-align: -0.15em; }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip">Skip to content</a>
+
+    <header>
+        <div class="container nav" role="navigation" aria-label="Primary">
+            <a class="brand" href="/">
+                <!-- Inline SVG logo (simple brain/circuit). Replace if you have a real logo. -->
+                <svg class="logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <defs>
+                        <linearGradient id="g" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#0ea5e9" />
+                            <stop offset="100%" stop-color="#22c55e" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#g)" d="M26 6c-7 0-12 5-12 12 0 2 0 3 1 4-3 2-5 6-5 10 0 6 4 11 9 12 1 6 6 10 12 10h2c9 0 17-8 17-17 0-4-1-7-3-10 1-2 1-3 1-5 0-7-6-12-13-12-3 0-5 1-7 3-1-3-4-7-12-7zm5 12a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm-10 8h6a2 2 0 1 1 0 4h-6a2 2 0 1 1 0-4zm14 6h8a2 2 0 1 1 0 4h-8a2 2 0 1 1 0-4zm-6 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
+                </svg>
+                <span>Freethought<span style="color: var(--accent)">.me</span></span>
+            </a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-card">
+                    <div>
+                        <div class="tag">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16v2H4zm0 7h16v2H4zm0 7h16v2H4z"/></svg>
+                            Local-first LLMs • Datasets • Tools
+                        </div>
+                        <h1>Practical AI without the fluff.</h1>
+                        <p class="muted" style="margin: 0 0 16px 0;">
+                            Freethought helps you build, train, and deploy lean language models and data pipelines that run fast and stay under your control.
+                        </p>
+                        <div class="badges">
+                            <span class="badge">Phi-2 / LoRA</span>
+                            <span class="badge">Dataset Curation</span>
+                            <span class="badge">Training Pipelines</span>
+                            <span class="badge">Local &amp; Offline</span>
+                        </div>
+                        <div class="cta">
+                            <!-- TODO: Replace you@example.com with your real email or link to your contact section -->
+                            <a class="btn primary" href="#contact" title="Get in touch">
+                                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 13L2 6h20l-10 7zm0 2l-10-7v10h20V8l-10 7z"/></svg>
+                                Contact
+                            </a>
+                            <a class="btn" href="#projects" title="See recent work">
+                                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 7v-7h7v7z"/></svg>
+                                Projects
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card" style="margin: 0;">
+                        <h2 class="section-title" style="margin-top: 0;">Quick Highlights</h2>
+                        <ul class="clean muted">
+                            <li>• Dynamic early-stopping, loss logging, and dataset grading.</li>
+                            <li>• Clean, local-only training flows with reproducible configs.</li>
+                            <li>• Transparent metrics and artifacts for every run.</li>
+                            <li>• Zero-bloat HTML/CSS for this site. No JS frameworks.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container grid">
+                <div class="card half">
+                    <h2 class="section-title">About</h2>
+                    <p class="muted">
+                        Freethought is an independent shop focused on local-first AI. I build small, sharp models and
+                        data tooling that are easy to run and easy to reason about. If you care about speed, control, and
+                        clarity, you’re in the right place.
+                    </p>
+                </div>
+                <div class="card half">
+                    <h2 class="section-title">Approach</h2>
+                    <ul class="clean muted">
+                        <li>• Start simple: baselines, clean data, clear metrics.</li>
+                        <li>• Iterate tightly: measure, change one thing, measure again.</li>
+                        <li>• Own your stack: local caches, offline modes, reproducible seeds.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container grid">
+                <div class="card third">
+                    <h3 class="section-title">LLM Training</h3>
+                    <p class="muted">LoRA on Phi-2 and similar footprints, from data prep to evaluation.</p>
+                </div>
+                <div class="card third">
+                    <h3 class="section-title">Datasets</h3>
+                    <p class="muted">Curation, filtering, token length analysis, and quality scoring.</p>
+                </div>
+                <div class="card third">
+                    <h3 class="section-title">Pipelines &amp; Tools</h3>
+                    <p class="muted">Training scripts, logging, and packaging for local deployment.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container grid">
+                <div class="card third">
+                    <h3 class="section-title">PhiTunes</h3>
+                    <p class="muted">A lean training pipeline with dynamic early-stopping and loss analytics.</p>
+                </div>
+                <div class="card third">
+                    <h3 class="section-title">Loss Analyzer</h3>
+                    <p class="muted">Structured <code>.jsonl</code> logs with visual review and regression checks.</p>
+                </div>
+                <div class="card third">
+                    <h3 class="section-title">PhiDo</h3>
+                    <p class="muted">Chat script with real-world diagnostics for prompt and output quality.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container grid">
+                <div class="card">
+                    <h2 class="section-title">Contact</h2>
+                    <p class="muted" style="margin-bottom: 12px;">
+                        Ready to talk? Send an email or open an issue in your repo.
+                    </p>
+                    <!-- Replace you@example.com with your real address -->
+                    <p>
+                        <a class="btn primary" href="mailto:you@example.com?subject=Freethought.me%20Inquiry">Email</a>
+                        <a class="btn" href="#" title="Link to your GitHub or preferred channel">GitHub</a>
+                    </p>
+                    <p class="muted" style="margin-top: 12px;">
+                        Tip: If you’re hosting on GitHub Pages or Netlify, just drop this file in your repo root as <code>index.html</code>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <small>© <span id="year">2025</span> Freethought.me • All rights reserved.</small>
+        </div>
+    </footer>
+
+    <script>
+        // Keep the footer year fresh
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
