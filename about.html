@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>William — Projects & Apps</title>
+        <meta name="description" content="William's personal page for apps, experiments, and GitHub links." />
+        <meta property="og:title" content="William — Projects & Apps" />
+        <meta property="og:description" content="Light, fast page listing my apps, tools, and GitHub work." />
+        <meta property="og:type" content="website" />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+        <style>
+            :root{
+                --bg: #ffffff;
+                --ink: #111827;
+                --muted: #6b7280;
+                --card: #ffffff;
+                --ring: #e5e7eb;
+                --pill: #f3f4f6;
+                --brandA: #8b5cf6; /* violet-500 */
+                --brandB: #22d3ee; /* cyan-400 */
+                --brandC: #f472b6; /* pink-400 */
+            }
+            @media (prefers-color-scheme: dark){
+                :root{
+                    --bg: #0b1020;
+                    --ink: #f9fafb;
+                    --muted: #9ca3af;
+                    --card: #121831;
+                    --ring: #1f2a4a;
+                    --pill: #17203e;
+                }
+            }
+            * { box-sizing: border-box; }
+            html, body { height: 100%; }
+            body{
+                margin: 0;
+                color: var(--ink);
+                background:
+                    radial-gradient(1200px 600px at 90% -10%, rgba(136,58,255,0.12), transparent 60%),
+                    radial-gradient(900px 500px at -20% 10%, rgba(34,211,238,0.12), transparent 60%),
+                    linear-gradient(180deg, var(--bg), var(--bg));
+                background-attachment: fixed;
+                font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                line-height: 1.6;
+            }
+            .wrap{ max-width: 1100px; margin: 0 auto; padding: 24px; }
+            header{
+                display: flex; align-items: center; justify-content: space-between; gap: 16px;
+                padding: 10px 0 6px;
+            }
+            .brand a{
+                display: inline-flex; gap: 10px; align-items: center; text-decoration: none; color: var(--ink);
+                font-weight: 800; letter-spacing: 0.2px;
+            }
+            .brand-logo{
+                width: 36px; height: 36px; border-radius: 12px; padding: 6px;
+                background: conic-gradient(from 180deg at 50% 50%, var(--brandA), var(--brandB), var(--brandC), var(--brandA));
+                box-shadow: 0 4px 24px rgba(139,92,246,0.35);
+            }
+            nav a{
+                color: var(--muted); text-decoration: none; font-weight: 600; margin-left: 14px; padding: 8px 12px; border-radius: 10px;
+            }
+            nav a:hover{ background: var(--pill); color: var(--ink); }
+            .hero{
+                margin-top: 30px; display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: center;
+            }
+            .avatar{
+                width: 120px; height: 120px; border-radius: 30px; padding: 4px;
+                background: linear-gradient(135deg, var(--brandA), var(--brandB), var(--brandC));
+                box-shadow: 0 10px 40px rgba(34,211,238,0.25);
+            }
+            .avatar img{
+                width: 100%; height: 100%; display:block; border-radius: 26px; object-fit: cover; background: var(--card);
+            }
+            h1{
+                margin: 0 0 6px 0; font-family: Nunito, Inter, system-ui, sans-serif; font-size: 2rem; line-height: 1.2;
+            }
+            .tagline{ color: var(--muted); margin: 0; }
+            .pills{
+                margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 10px;
+            }
+            .pill{
+                display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 999px; background: var(--pill); color: var(--ink);
+                font-weight: 600; text-decoration: none; border: 1px solid var(--ring);
+            }
+            .pill svg{ width: 18px; height: 18px; }
+            .section{
+                margin-top: 36px;
+                border: 1px solid var(--ring);
+                background: rgba(255,255,255,0.35);
+                backdrop-filter: blur(6px);
+                -webkit-backdrop-filter: blur(6px);
+                border-radius: 18px; padding: 18px;
+            }
+            @media (prefers-color-scheme: dark){
+                .section{ background: rgba(18,24,49,0.55); }
+            }
+            .section h2{
+                margin: 0 0 8px 0; font-family: Nunito, Inter, system-ui, sans-serif; font-size: 1.25rem;
+            }
+            .muted{ color: var(--muted); margin-top: 6px; }
+            .grid{
+                margin-top: 14px;
+                display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+            }
+            @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2,1fr); } }
+            @media (max-width: 640px){ 
+                .hero{ grid-template-columns: 1fr; }
+                .grid{ grid-template-columns: 1fr; }
+            }
+            .card{
+                background: var(--card); border: 1px solid var(--ring); border-radius: 14px; padding: 14px;
+                transition: transform .15s ease, box-shadow .15s ease;
+            }
+            .card:hover{ transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,0.08); }
+            .card h3{ margin: 0 0 6px 0; font-size: 1.05rem; }
+            .tags{ display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 10px; }
+            .tag{ font-size: .75rem; padding: 4px 8px; border-radius: 999px; background: var(--pill); border: 1px solid var(--ring); color: var(--muted); }
+            .actions{ display: flex; gap: 8px; }
+            .btn{
+                display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 12px; text-decoration: none; font-weight: 700;
+                border: 1px solid var(--ring); background: var(--pill); color: var(--ink);
+            }
+            .btn.primary{ background: linear-gradient(135deg, var(--brandB), var(--brandA)); color: white; border: none; }
+            .btn svg{ width: 18px; height: 18px; }
+            footer{
+                margin: 40px 0 10px; text-align: center; color: var(--muted);
+            }
+            /* Subtle enter animation (respects reduced motion) */
+            @media (prefers-reduced-motion: no-preference){
+                .card, .section, .pill { animation: pop .25s ease both; }
+                @keyframes pop { from { transform: translateY(4px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+            }
+        </style>
+        <script type="application/ld+json">
+        {
+            "@context":"https://schema.org",
+            "@type":"Person",
+            "name":"William",
+            "url":"https://freethought.me/my.html",
+            "sameAs":[
+                "https://github.com/R0U5"
+            ],
+            "jobTitle":"Builder • Local-first AI & Tools"
+        }
+        </script>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <div class="brand">
+                    <a href="/index.html" aria-label="Back to Freethought home">
+                        <div class="brand-logo" aria-hidden="true"></div>
+                        <span>Freethought</span>
+                    </a>
+                </div>
+                <nav>
+                    <a href="/index.html">Home</a>
+                    <a href="#apps">Apps</a>
+                    <a href="#repos">Repos</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </header>
+
+            <section class="hero">
+                <div class="avatar" aria-hidden="true">
+                    <!-- Replace src with your photo or logo -->
+                    <img src="/images/me-avatar.png" alt="William avatar" />
+                </div>
+                <div>
+                    <h1>Hey, I'm William 👋</h1>
+                    <p class="tagline">I build small, sharp AI tools and game-server utilities. This page collects my apps, experiments, and GitHub links.</p>
+                    <div class="pills" role="list">
+                        <a class="pill" href="https://github.com/R0U5" target="_blank" rel="noopener">
+                            <!-- GitHub icon -->
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.793 23.4c.6.111.82-.26.82-.58 0-.285-.01-1.04-.016-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.386-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.834 2.809 1.304 3.493.997.108-.776.418-1.305.76-1.605-2.665-.305-5.466-1.333-5.466-5.931 0-1.31.468-2.381 1.236-3.221-.124-.303-.536-1.526.117-3.18 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 6.003 0c2.292-1.552 3.299-1.23 3.299-1.23.654 1.654.242 2.877.119 3.18.77.84 1.235 1.911 1.235 3.22 0 4.61-2.805 5.624-5.476 5.922.43.372.814 1.104.814 2.226 0 1.606-.015 2.9-.015 3.295 0 .322.218.697.826.579A12.003 12.003 0 0 0 12 .5"/></svg>
+                            GitHub
+                        </a>
+                        <a class="pill" href="mailto:hello@freethought.me">
+                            <!-- Mail -->
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 6.75A2.75 2.75 0 0 1 4.75 4h14.5A2.75 2.75 0 0 1 22 6.75v10.5A2.75 2.75 0 0 1 19.25 20H4.75A2.75 2.75 0 0 1 2 17.25V6.75Zm2.75-.25a.75.75 0 0 0-.75.75v.236l7.53 4.705a.75.75 0 0 0 .94 0L20 8.236V7.25a.75.75 0 0 0-.75-.75H4.75Zm15.03 3.983-6.34 3.958a2.25 2.25 0 0 1-2.88 0L4.22 10.483V17.25c0 .414.336.75.75.75h14.06a.75.75 0 0 0 .75-.75v-6.767Z"/></svg>
+                            Email
+                        </a>
+                        <a class="pill" href="#apps">See my apps ↓</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="apps" class="section">
+                <h2>Featured Apps & Tools</h2>
+                <p class="muted">Live demos and utilities I’m tinkering with. Click a card for details.</p>
+                <div class="grid">
+                    <!-- Card 1 -->
+                    <article class="card">
+                        <h3>LLM QA Radar</h3>
+                        <p>A compact testing harness to reveal strengths/weaknesses fast with category scores.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Charts</span>
+                            <span class="tag">Benchmarks</span>
+                        </div>
+                        <div class="actions">
+                            <a class="btn primary" href="#" target="_blank" rel="noopener">Live Demo</a>
+                            <a class="btn" href="https://github.com/R0U5" target="_blank" rel="noopener">
+                                <!-- code icon -->
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.7 17.7 3 12l5.7-5.7 1.4 1.4L5.8 12l4.3 4.3-1.4 1.4Zm6.6 0-1.4-1.4 4.3-4.3-4.3-4.3 1.4-1.4L21 12l-5.7 5.7Z"/></svg>
+                                Code
+                            </a>
+                        </div>
+                    </article>
+                    <!-- Card 2 -->
+                    <article class="card">
+                        <h3>PhiTunes Trainer</h3>
+                        <p>LoRA training helpers for small, sharp models with dynamic early stopping.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">LoRA</span>
+                            <span class="tag">CLI</span>
+                        </div>
+                        <div class="actions">
+                            <a class="btn primary" href="#" target="_blank" rel="noopener">Docs</a>
+                            <a class="btn" href="https://github.com/R0U5" target="_blank" rel="noopener">Code</a>
+                        </div>
+                    </article>
+                    <!-- Card 3 -->
+                    <article class="card">
+                        <h3>Rust Admin Tool</h3>
+                        <p>Utility scripts and helpers for Rust server admin workflows.</p>
+                        <div class="tags">
+                            <span class="tag">PowerShell</span>
+                            <span class="tag">Automation</span>
+                            <span class="tag">Servers</span>
+                        </div>
+                        <div class="actions">
+                            <a class="btn primary" href="#" target="_blank" rel="noopener">Readme</a>
+                            <a class="btn" href="https://github.com/R0U5" target="_blank" rel="noopener">Code</a>
+                        </div>
+                    </article>
+                    <!-- Card 4 -->
+                    <article class="card">
+                        <h3>DayZ Market Tools</h3>
+                        <p>Quick editors, checks, and snippets for Expansion Market configs.</p>
+                        <div class="tags">
+                            <span class="tag">DayZ</span>
+                            <span class="tag">JSON</span>
+                            <span class="tag">Config</span>
+                        </div>
+                        <div class="actions">
+                            <a class="btn primary" href="#" target="_blank" rel="noopener">Docs</a>
+                            <a class="btn" href="https://github.com/R0U5" target="_blank" rel="noopener">Code</a>
+                        </div>
+                    </article>
+                    <!-- Card 5 -->
+                    <article class="card">
+                        <h3>Local-First AI Demos</h3>
+                        <p>Small-browser demos for on-device inference and UX experiments.</p>
+                        <div class="tags">
+                            <span class="tag">Web</span>
+                            <span class="tag">WASM</span>
+                            <span class="tag">UX</span>
+                        </div>
+                        <div class="actions">
+                            <a class="btn primary" href="#" target="_blank" rel="noopener">Live</a>
+                            <a class="btn" href="https://github.com/R0U5" target="_blank" rel="noopener">Code</a>
+                        </div>
+                    </article>
+                    <!-- Card 6 -->
+                    <article class="card">
+                        <h3>Freethought Site</h3>
+                        <p>The public site & components that power freethought.me.</p>
+                        <div class="tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">GitHub Pages</span>
+                        </div>
+                        <div class="actions">
+                            <a class="btn primary" href="https://freethought.me" target="_blank" rel="noopener">Visit</a>
+                            <a class="btn" href="https://github.com/R0U5" target="_blank" rel="noopener">Code</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="repos" class="section">
+                <h2>GitHub Repos</h2>
+                <p class="muted">A few quick links. Swap these with specific repositories as you publish them.</p>
+                <div class="grid">
+                    <article class="card">
+                        <h3>@R0U5 / public</h3>
+                        <p>All public work on GitHub.</p>
+                        <div class="actions">
+                            <a class="btn primary" href="https://github.com/R0U5?tab=repositories" target="_blank" rel="noopener">Open</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <h3>Starred</h3>
+                        <p>Inspiration & useful upstream projects.</p>
+                        <div class="actions">
+                            <a class="btn primary" href="https://github.com/R0U5?tab=stars" target="_blank" rel="noopener">Open</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <h3>Gists</h3>
+                        <p>Small snippets, notes, and quick fixes.</p>
+                        <div class="actions">
+                            <a class="btn primary" href="https://gist.github.com/R0U5" target="_blank" rel="noopener">Open</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="contact" class="section">
+                <h2>Contact</h2>
+                <p class="muted">Got a question, idea, or bug report?</p>
+                <div class="pills">
+                    <a class="pill" href="mailto:hello@freethought.me">hello@freethought.me</a>
+                    <a class="pill" href="https://github.com/R0U5" target="_blank" rel="noopener">GitHub @R0U5</a>
+                </div>
+            </section>
+
+            <footer>
+                <small>© <span id="y"></span> William — Built with love & caffeine.</small>
+            </footer>
+        </div>
+        <script>
+            // update year without frameworks
+            document.getElementById('y').textContent = new Date().getFullYear();
+        </script>
+    </body>
+</html>
