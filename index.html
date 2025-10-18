@@ -18,7 +18,7 @@
   <meta property="og:description" content="Local-first LLM consulting, dataset curation, and tooling. Practical, fast, and transparent." />
   <meta property="og:url" content="https://freethought.me/" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://freethought.me/og.png" />
+  <meta property="og:image" content="https://freethought.me/Freethought_small.png" />
 
   <meta name="theme-color" content="#0ea5e9" />
 
@@ -158,15 +158,20 @@ p,li{ font-weight:400; }
   <header>
     <div class="container nav" role="navigation" aria-label="Primary">
       <a class="brand" href="/" aria-label="Freethought home">
-        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
-          <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0%" stop-color="#0ea5e9"/><stop offset="100%" stop-color="#22c55e"/></linearGradient></defs>
-          <path fill="url(#g)" d="M26 6c-7 0-12 5-12 12 0 2 0 3 1 4-3 2-5 6-5 10 0 6 4 11 9 12 1 6 6 10 12 10h2c9 0 17-8 17-17 0-4-1-7-3-10 1-2 1-3 1-5 0-7-6-12-13-12-3 0-5 1-7 3-1-3-4-7-12-7zm5 12a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm-10 8h6a2 2 0 1 1 0 4h-6a2 2 0 1 1 0-4zm14 6h8a2 2 0 1 1 0 4h-8a2 2 0 1 1 0-4zm-6 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
-        </svg>
+        <img
+          class="logo"
+          src="/Freethought_small.png"
+          alt=""
+          width="64"
+          height="64"
+          decoding="async"
+          fetchpriority="high"
+        />
         <span>Freethought<span style="color:var(--accent)">.me</span></span>
       </a>
       <nav>
         <a href="/about.html">My Projects</a>
-        <a href="https://www.linkedin.com/company/freethought-llm">Follow our Linkden Page</a>
+        <a href="https://www.linkedin.com/company/freethought-llm">Follow our LinkedIn Page</a>
         <a href="https://drive.google.com/file/d/1UGfWeFrpRqT9qWVT5PSWLSgWpQR_GN95/view?usp=sharing">Free Demo LLM</a>
         <a href="https://github.com/R0U5">Visit my Github</a>
       </nav>
@@ -259,23 +264,6 @@ p,li{ font-weight:400; }
         <div class="card third">
           <h3 class="section-title">Pipelines &amp; Tools</h3>
           <p class="muted">Training scripts, logging, and packaging for local deployment.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="tools">
-      <div class="container grid">
-        <div class="card third">
-          <h3 class="section-title">LLM Fine-Tuning Engine</h3>
-          <p class="muted">A high-efficiency fine-tuning framework for transformer models (e.g., Phi-2) with support for LoRA, adaptive training dynamics, and structured data handling. Includes features like memory-aware tokenization, dynamic early stopping, error-aware recovery logic, and seamless multi-mode support (SFT, DPO). Designed for local GPU optimization and large-scale dataset training with minimal manual intervention.</p>
-        </div>
-        <div class="card third">
-          <h3 class="section-title">Intelligent Response Evaluator</h3>
-          <p class="muted">Runs structured QA batches across categories like logic, math, science, and language. Includes primed examples and answer cleaning routines to simulate real-world chat deployment. Helps monitor LLM performance drift and detect hallucinations or weak spots post-training. Also uses deterministic tests on a range of academic and commonsense questions. Includes auto-grading logic and a final radar chart to visualize model performance across categories.</p>
-        </div>
-        <div class="card third">
-          <h3 class="section-title">Visual Training Diagnostics</h3>
-          <p class="muted">Standalone GUI tool to analyze training logs. Features interactive loss curve plotting, EMA smoothing, variance scoring, and trend classification. Automatically grades model progress and predicts ideal stopping points.</p>
         </div>
       </div>
     </section>
