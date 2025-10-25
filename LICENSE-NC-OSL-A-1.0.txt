@@ -1,8 +1,6 @@
 Non‑Commercial Open Software License — Attribution & Copyleft (NC‑OSL‑A 1.0)
 
-Copyright (c) [YEAR] [LICENSOR NAME]
-Project: [PROJECT NAME]
-Contact: [CONTACT OR URL]
+Copyright (c) 2025 William Furtado
 
 Preamble
 This license lets you use, study, modify, and share the software for any non‑commercial purpose, as long as you
@@ -61,13 +59,10 @@ TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL THE LICENSOR BE LIABLE 
 11. Severability; No Waiver
 If any provision of this License is unenforceable, the remaining provisions will remain in effect. No failure or delay by the Licensor in enforcing any right or provision will constitute a waiver.
 
-12. How to Apply This License
-Replace the bracketed fields below and include this notice at the top of each source file or in a separate NOTICE file:
-    Copyright (c) [YEAR] [LICENSOR NAME]
-    Licensed under the Non‑Commercial Open Software License — Attribution & Copyleft (NC‑OSL‑A 1.0).
-    You may use, modify, and share this software for NON‑COMMERCIAL purposes only, provided
-    you credit the original developer and distribute source code under the same license.
-    For commercial licensing, contact [CONTACT OR URL].
+Copyright (c) 2025 William Furtado
+Licensed under the Non‑Commercial Open Software License — Attribution & Copyleft (NC‑OSL‑A 1.0).
+You may use, modify, and share this software for NON‑COMMERCIAL purposes only, provided you credit the original developer and distribute source code under the same license.
+For commercial licensing, contact williamefurtado@gmail.com.
 
 ——
 This license is intended to be broadly compatible with common open‑source workflows while remaining non‑commercial; it is not
