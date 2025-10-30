@@ -1,26 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3198756298645695"
-     crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
-
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3198756298645695" crossorigin="anonymous"></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Freethought</title>
-  <meta name="description" content="LLM consulting, dataset curation and tooling. Practical, fast, and transparent." />
+  <title>Freethought — Practical AI without the fluff</title>
+  <meta name="description" content="LLM consulting, datasets, and tooling. Practical, fast, and transparent." />
   <link rel="canonical" href="https://freethought.me/" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Freethought.me" />
-  <meta property="og:description" content="LLM consulting, dataset curation and tooling. Practical, fast, and transparent." />
-  <meta property="og:url" content="https://freethought.me/" />
+  <meta property="og:title" content="Freethought" />
+  <meta property="og:description" content="LLM consulting, datasets, and tooling. Practical, fast, and transparent." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://freethought.me/" />
   <meta property="og:image" content="https://freethought.me/Freethought_small.png" />
-
   <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -28,35 +23,40 @@
       --panel:#0f1220;
       --text:#e7e9ee;
       --muted:#9aa3b2;
-      --accent:#0ea5e9;   /* sky-cyan */
-      --accent2:#22c55e;  /* green */
+      --accent:#0ea5e9;
+      --accent2:#22c55e;
       --ring:#7dd3fc;
       --radius:18px;
       --maxw:1120px;
+
+      /* glass + controls */
+      --card-bg: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.14);
+      --shadow-1: rgba(0,0,0,0.35);
+      --shadow-2: rgba(18, 251, 210, 0.25);
+      --btn-bg: rgba(255,255,255,0.08);
+      --btn-bg-hover: rgba(255,255,255,0.14);
     }
     @media (prefers-color-scheme: light){
       :root{ --bg:#ffffff; --panel:#f6f7fb; --text:#101420; --muted:#546073; }
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
 
-    /* Base page styles */
+    /* Base page styles — loosened line-height for readability */
     body{
       margin:0;
-      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      font-family:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color:var(--text);
-      line-height:1.55;
-      background: var(--bg); /* solid fallback */
+      line-height:1.65; /* was 1.55 */
+      background: var(--bg);
     }
 
-    /* Non-repeating gradient field on a fixed layer (no tiling) */
+    /* Fixed gradient field */
     body::before{
       content:"";
-      position:fixed;
-      inset:0;
-      z-index:-1;
-      pointer-events:none;
+      position:fixed; inset:0; z-index:-1; pointer-events:none;
       background:
         radial-gradient(1200px 800px at 80% -20%, rgba(14,165,233,.14), transparent 60%),
         radial-gradient(900px 700px at 10% -10%, rgba(34,197,94,.12), transparent 60%),
@@ -66,205 +66,216 @@
       background-size: 1600px 1100px, 1200px 900px, 240% 240%;
     }
 
-    /* util */
-    .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-    .muted{color:var(--muted)}
-    .grid{display:grid;gap:18px;grid-template-columns:repeat(12,minmax(0,1fr))}
-    @media (min-width:760px){ .half{grid-column:span 6} .third{grid-column:span 4}}
+    /* utilities */
+    .container{ max-width:var(--maxw); margin:0 auto; padding:0 28px } /* a bit more side padding */
+    .grid{ display:grid; gap:22px; grid-template-columns:repeat(12, minmax(0,1fr)) } /* was 18px */
+    @media (min-width:760px){
+      .half{ grid-column:span 6 }
+      .third{ grid-column:span 4 }
+      .col-8{ grid-column:span 8 }
+      .col-4{ grid-column:span 4 }
+      .col-6{ grid-column:span 6 }
+      .col-12{ grid-column:span 12 }
+    }
+    @media (max-width:759px){
+      .half,.third,.col-8,.col-4,.col-6,.col-12{ grid-column:span 12 }
+    }
+    .muted{ color:var(--muted) }
+    .section{ padding:80px 0 } /* was 60px */
+    h1,h2,h3{ font-weight:700; letter-spacing:-0.01em }
+    h1{ font-size:clamp(34px, 5.4vw, 56px); line-height:1.08; margin:0 0 12px } /* more margin under h1 */
+    h2.section-title{ font-size:22px; margin:0 0 16px; letter-spacing:.2px }
 
-    /* a11y */
-    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip:focus{left:16px;top:16px;padding:8px 12px;background:var(--panel);border-radius:10px;outline:2px solid var(--accent)}
+    /* accessibility */
+    .skip{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden }
+    .skip:focus{ left:16px; top:16px; padding:8px 12px; background:var(--panel); border-radius:10px; outline:2px solid var(--accent) }
 
     /* header */
     header{
-      
-      position:sticky;top:0;z-index:10;
+      position:sticky; top:0; z-index:10;
       backdrop-filter:saturate(180%) blur(10px);
       background:color-mix(in oklab, var(--bg) 85%, transparent);
       border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent);
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-    .brand{display:inline-flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
-    .logo{width:32px;height:32px}
-    nav a{padding:8px 12px;border-radius:10px;font-weight:600;color:var(--muted)}
-    nav a:hover, nav a:focus{color:var(--text);background:color-mix(in oklab, var(--panel) 70%, transparent);outline:none}
+    .nav{ display:flex; align-items:center; justify-content:space-between; height:68px }
+    .brand{ display:inline-flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px; text-decoration:none; color:var(--text) }
+    .logo{ width:32px; height:32px; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 18px 2px var(--shadow-2) }
+    nav a{ padding:8px 12px; border-radius:10px; font-weight:600; color:var(--muted); text-decoration:none }
+    nav a:hover,nav a:focus{ color:var(--text); background:color-mix(in oklab, var(--panel) 70%, transparent); outline:none }
 
-    /* hero */
-    .hero{padding:84px 0 40px;position:relative;overflow:clip}
-    .orb{
-      position:absolute;inset:-120px -120px auto auto;pointer-events:none;
-      width:520px;height:520px;border-radius:50%;
-      background:radial-gradient(closest-side, rgba(125,211,252,.35), rgba(34,197,94,.18), transparent 70%);
-      filter:blur(34px);opacity:.8;
+    /* glass hero card — roomier padding */
+    .glass-wrap{ display:grid; place-items:center; padding:72px 24px 96px } /* was 48 24 64 */
+    .glass-card{
+      width:min(980px,92vw);
+      background:var(--card-bg);
+      border:1px solid var(--card-border);
+      border-radius:20px;
+      padding:40px; /* was 28px */
+      box-shadow:0 20px 60px var(--shadow-1), 0 0 0 1px rgba(255,255,255,0.02) inset, 0 0 36px 4px var(--shadow-2);
+      backdrop-filter: blur(10px) saturate(120%);
     }
-    @media (prefers-reduced-motion:no-preference){
-      .orb{animation:float 10s ease-in-out infinite alternate}
-      @keyframes float{from{transform:translateY(-8px)}to{transform:translateY(10px)}}
+    .glass-card .lead{ color:var(--muted); font-size:clamp(15px,2.4vw,18px); margin:0 0 18px } /* add bottom space */
+
+    /* NEW: primary CTA row (separate from socials) */
+    .cta-row{
+      display:flex; gap:14px; flex-wrap:wrap;
+      margin: 8px 0 10px;
     }
-    .hero-card{
-      position:relative;
-      background:linear-gradient(180deg, color-mix(in oklab,var(--panel) 60%,transparent), var(--panel));
-      border:1px solid color-mix(in oklab,var(--text) 8%, transparent);
-      border-radius:var(--radius);
-      padding:36px;display:grid;gap:22px;grid-template-columns:1fr;
-      box-shadow:0 10px 40px rgba(0,0,0,.25);
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 16px; border-radius:12px; font-weight:800;
+      border:1px solid color-mix(in oklab,var(--text) 10%, transparent);
+      background:color-mix(in oklab,var(--panel) 60%, transparent);
+      color:var(--text); text-decoration:none
     }
-    @media (min-width:760px){ .hero-card{grid-template-columns:1.15fr 1fr} }
+    .btn:hover{ background:color-mix(in oklab,var(--panel) 90%, transparent) }
+    .btn.primary{ background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#001018; border-color:transparent }
+    .btn.primary:hover{ filter:brightness(1.05) }
+    .btn-lg{ padding:14px 20px; font-size:1rem; } /* slightly larger primary CTA */
 
-    .tag{display:inline-flex;gap:10px;align-items:center;font-size:14px;color:var(--muted)}
-    .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .badge{border:1px solid color-mix(in oklab,var(--text) 12%, transparent);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
-    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;font-weight:800;border:1px solid color-mix(in oklab,var(--text) 10%, transparent);background:color-mix(in oklab,var(--panel) 60%, transparent)}
-    .btn:hover{background:color-mix(in oklab,var(--panel) 90%, transparent)}
-    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#001018;border-color:transparent}
-    .btn.primary:hover{filter:brightness(1.05)}
+    /* about grid — looser */
+    .about-grid{ display:grid; grid-template-columns:1fr; gap:24px; margin-top:28px } /* was 16px/22px */
+    @media (min-width:880px){ .about-grid{ grid-template-columns:1.4fr .9fr } }
+    .about-panel{ background:rgba(0,0,0,0.16); border:1px solid rgba(255,255,255,0.10); border-radius:16px; padding:20px 20px 16px }
+    .about-panel h3{ margin:0 0 10px 0; font-size:18px }
+    .about-panel p{ margin:0 0 12px 0; color:var(--muted) }
 
-    /* gradient title */
-    .gradient-text{
-      background:linear-gradient(90deg, #e5f5ff, #80eec0 60%, #e5f5ff);
-      -webkit-background-clip:text;background-clip:text;color:transparent
+    /* NEW: subtle divider to separate content blocks */
+    .divider{
+      height:1px; width:100%;
+      background: color-mix(in oklab, var(--text) 10%, transparent);
+      margin: 18px 0 8px;
+      border:0;
     }
-    h1{font-size:clamp(34px, 5.4vw, 56px);line-height:1.08;margin:0 0 8px;letter-spacing:-.02em}
-    h2.section-title{font-size:22px;margin:0 0 14px;letter-spacing:.2px}
 
-    /* cards & sections */
-    section{padding:60px 0}
-    .card{grid-column:span 12;background:var(--panel);border:1px solid color-mix(in oklab,var(--text) 8%, transparent);border-radius:var(--radius);padding:22px}
-    .card:hover{box-shadow:0 0 0 1px color-mix(in oklab,var(--ring) 70%, transparent), 0 10px 30px rgba(0,0,0,.2)}
-
-    /* trust bar */
-    .trust{display:flex;gap:18px;flex-wrap:wrap;align-items:center;opacity:.9}
-    .trust img{height:26px;filter:grayscale(100%);opacity:.7}
+    /* NEW: compact social row with circular icon buttons */
+    .connect{ display:flex; align-items:center; gap:12px; margin-top:10px; flex-wrap:wrap }
+    .connect .label{ color:var(--muted); font-weight:600; font-size:.95rem; margin-right:4px }
+    .icon-btn{
+      width:44px; height:44px; /* meets modern target-size guidance */
+      display:inline-flex; align-items:center; justify-content:center;
+      border-radius:999px;
+      background:var(--btn-bg);
+      border:1px solid rgba(255,255,255,0.12);
+      color:var(--text); text-decoration:none;
+    }
+    .icon-btn:hover{ background:var(--btn-bg-hover) }
+    .icon-btn svg{ width:20px; height:20px; }
 
     /* footer */
-    footer{border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent);padding:24px 0 56px;color:var(--muted)}
+    footer{ border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent); padding:28px 0 64px; color:var(--muted) }
 
     /* focus */
-    :where(a,button,.btn):focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+    :where(a,button,.btn,.icon-btn):focus-visible{ outline:2px solid var(--accent); outline-offset:2px }
   </style>
 
-<style id="trust-font-tune">
-:root{ --font-sans: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
-body{ font-family: var(--font-sans); font-optical-sizing:auto; font-variant-numeric: tabular-nums; }
-h1,h2,h3{ font-weight:700; letter-spacing:-0.01em; }
-p,li{ font-weight:400; }
-</style>
+  <!-- Article structured data (unchanged) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "The Ouroboros Problem: When AI Starts Eating Its Own Tail",
+    "datePublished": "2025-10-30T12:00:00-07:00",
+    "dateModified": "2025-10-30T12:00:00-07:00",
+    "author": { "@type": "Person", "name": "William Furtado" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Freethought",
+      "logo": { "@type": "ImageObject", "url": "https://freethought.me/Freethought_small.png" }
+    },
+    "description": "As AI-generated text, images, and music fill the web, newer models start learning from that content. The loop leads to sameness and model collapse.",
+    "mainEntityOfPage": "https://freethought.me/"
+  }
+  </script>
 </head>
 <body>
   <a href="#main" class="skip">Skip to content</a>
 
   <header>
     <div class="container nav" role="navigation" aria-label="Primary">
-      <a class="brand" href="/" aria-label="Freethought home">
-        <img
-          class="logo"
-          src="/Freethought_small.png"
-          alt=""
-          width="64"
-          height="64"
-          decoding="async"
-          fetchpriority="high"
-        />
+      <a class="brand" href="#home" aria-label="Freethought home">
+        <img class="logo" src="/Freethought_small.png" alt="" width="64" height="64" decoding="async" fetchpriority="high" />
         <span>Freethought<span style="color:var(--accent)">.me</span></span>
       </a>
       <nav>
-        <a href="/about.html">About me</a>
+        <a href="#blog">Blog</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero">
-      <div class="orb" aria-hidden="true"></div>
-      <div class="container">
-        <div class="hero-card">
-          <div>
-            <div class="tag">
-              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16v2H4zm0 7h16v2H4zm0 7h16v2H4z"/></svg>
-              LLMs | Datasets | Tooling
-            </div>
-            <h1><span class="gradient-text">Practical AI without the fluff.</span></h1>
-            <p class="muted" style="margin:0 0 16px">
-              Train, build and deploy local large language models that run fast and stay under <em>your</em> control.
-            </p>
-            <div class="badges">
-              <span class="badge">Dataset Curation</span>
-              <span class="badge">Offline Training Pipelines</span>
-              <span class="badge">Verifiable Results</span>
-            </div>
-            <div class="cta">
-              <a class="btn primary" href="mailto:williamefurtado@gmail.com?subject=Freethought.me%20Inquiry" title="Email me">
-                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 13L2 6h20l-10 7zm0 2l-10-7v10h20V8l-10 7z"/></svg>
-                Email
-              </a>
-              <a class="btn primary" href="" title="">
-                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 3H4a2 2 0 0 0-2 2v13l4-3h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z" fill="currentColor"/>/></svg>
-                Chat
-              </a>
-            </div>
-          </div>
-
-          <div class="card" style="margin:0">
-            <h2 class="section-title" style="margin-top:0">Highlights</h2>
-            <ul class="muted" style="list-style:none;padding:0;margin:0">
-              <li>• Intelligent dynamic early-stopping, loss logging, and dataset grading.</li>
-              <li>• Clean, offline training flows with reproducible configs.</li>
-              <li>• Transparent metrics and artifacts for every run.</li>
-              <li>• Zero-bloat. No HTML/CSS. No JS frameworks.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div style="margin-top:18px" aria-label="Trusted by">
-          <div class="trust">
-            <!--Add client logos later -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container grid">
-        <div class="card half">
-          <h2 class="section-title">About Us</h2>
-          <p class="muted">
-                Freethought is an LLM consultancy that specializes in building compact (~2.7B) models.<br>
-                Built for accuracy; delivered as speed and control. Trained offline in an air-gapped environment.
+    <!-- ABOUT (glass card + panels) -->
+    <section id="about" class="section">
+      <div class="glass-wrap">
+        <section class="glass-card" aria-label="About Freethought">
+          <div class="kicker"></div>
+          <h1>2B models. Sharp tooling.<span style="color:#64ffd9"> Provable results.</span></h1>
+          <p class="lead">
+            Freethought is a small AI consultancy delivering precise tooling and competitive custom models at high efficiency.
+            We build models like <strong>FreethoughtGPT</strong> using our in-house training pipelines, then stress-test with a rigorous bank of real tasks.
           </p>
-        </div>
-        <div class="card half">
-          <h2 class="section-title">Our Approach</h2>
-          <ul class="muted" style="list-style:none;padding:0;margin:0">
-            <li>• Start simple: baselines, clean data, clear metrics.</li>
-            <li>• Iterate tightly: measure -> change -> measure again.</li>
-            <li>• Own your stack: local caches, offline modes, reproducible seeds.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
 
-    <section id="services">
-      <div class="container grid">
-        <div class="card third">
-          <h3 class="section-title">LLM Training</h3>
-          <p class="muted">LoRA on Phi-2 and similar footprints, from data prep to evaluation.</p>
-        </div>
-        <div class="card third">
-          <h3 class="section-title">Datasets</h3>
-          <p class="muted">Curation, filtering, token length analysis, and quality scoring.</p>
-        </div>
-        <div class="card third">
-          <h3 class="section-title">Pipelines &amp; Tools</h3>
-          <p class="muted">Training scripts, logging, and packaging for local deployment.</p>
-        </div>
+          <!-- NEW: Primary CTA separated from socials -->
+          <div class="cta-row">
+            <a class="btn primary btn-lg" href="mailto:williamefurtado@gmail.com" title="Email William">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 13L2 6h20l-10 7zm0 2l-10-7v10h20V8l-10 7z"/></svg>
+              Email
+            </a>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-panel">
+              <h3>What we do</h3>
+              <p>
+                • Custom creation of datasets with strict quality gates.<br />
+                • Evaluation harnesses with clear, precise metrics.<br />
+                • Training that avoids overfitting and prefers efficiency over wasted compute.
+              </p>
+              <hr class="divider" />
+
+              <!-- NEW: Socials moved into a compact professional “Connect” row -->
+              <div class="connect" aria-label="Social links">
+                <span class="label">Connect</span>
+
+                <a class="icon-btn" href="https://github.com/R0U5" target="_blank" rel="noopener" aria-label="GitHub">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.3 11.6.6.1.8-.3.8-.6v-2c-3.4.8-4-1.6-4-1.6-.6-1.5-1.4-1.9-1.4-1.9-1.2-.8.1-.8.1-.8 1.4.1 2.1 1.5 2.1 1.5 1.2 2.1 3.1 1.5 3.8 1.1.1-.9.5-1.5.8-1.8-2.7-.3-5.6-1.4-5.6-6.1 0-1.4.5-2.6 1.3-3.5-.1-.3-.6-1.7.1-3.4 0 0 1.1-.4 3.6 1.3a12.1 12.1 0 0 1 6.6 0c2.5-1.7 3.6-1.3 3.6-1.3.7 1.7.2 3.1.1 3.4.8.9 1.3 2.1 1.3 3.5 0 4.7-2.9 5.8-5.6 6.1.4.3.8 1 .8 2.1v3.1c0 .3.2.8.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/>
+                  </svg>
+                </a>
+
+                <a class="icon-btn" href="https://x.com/williamefurtado" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M18.3 2h3.2l-7 8.1 8.2 11.9H16l-5.1-6.7-5.8 6.7H1.9l7.5-8.7L1.5 2h6.5l4.6 6.1L18.3 2Zm-2.3 19.3h1.8L8.1 4.6H6.2l9.8 16.7Z"/>
+                  </svg>
+                </a>
+
+                <a class="icon-btn" href="https://www.buymeacoffee.com/williameful" target="_blank" rel="noopener" aria-label="Buy Me a Coffee">
+                  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M6.898 0L5.682 2.799H3.877v2.523h.695L5.277 9.8H4.172l1.46 8.23.938-.01L7.512 24h8.918l.062-.4.88-5.58.888.01 1.46-8.231h-1.056l.705-4.477h.756V2.8h-1.918L16.99 0H6.898zm.528.805h9.043l.771 1.78H6.652l.774-1.78zm-2.75 2.797H19.32v.92H4.676v-.92zm.453 6.998h13.635l-1.176 6.62-5.649-.06-5.636.06-1.174-6.62z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="about-panel">
+              <h3>How we work</h3>
+              <p>We prefer simple, auditable code and transparent metrics. Every feature that affects training or evaluation is wired thoughtfully, with logs that explain what the system did and why.</p>
+              <p>Projects start small and ship early. When something improves outcomes, we keep it. When it doesn’t, we remove it. No drama. Just results.</p>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
+  </main>
+
   <footer>
-    <div class="container">
-      <small>© <span id="year">2025</span> Freethought.me • All rights reserved.</small>
+    <div class="container" style="text-align:center">
+      <small>© <span id="year">2025</span> Freethought.me • Powered by caffeine • All rights reserved.</small>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
