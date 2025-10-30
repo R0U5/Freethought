@@ -1,22 +1,26 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google AdSense (same as index.html) -->
+  <!-- Ads (kept consistent with index) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3198756298645695" crossorigin="anonymous"></script>
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Freethought — Blog</title>
-  <meta name="description" content="Freethought blog: reporting and analysis on local-first AI, data quality, and tooling." />
+  <title>Blog</title>
+  <meta name="description" content="Reporting and analysis on AI." />
   <link rel="canonical" href="https://freethought.me/blog.html" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Freethought — Blog" />
-  <meta property="og:description" content="Reporting and analysis on local-first AI, data quality, and tooling." />
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Freethought Blog" />
+  <meta property="og:description" content="Reporting and analysis on AI." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://freethought.me/blog.html" />
-  <meta property="og:image" content="https://freethought.me/Freethought_small.png" />
+  <!-- Use your lead image (same folder as Freethought_small.png). Prefer 1200×630-ish. -->
+  <meta property="og:image" content="/AIOuroboros.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="/AIOuroboros.png" />
+  <!-- 1200×630 is the common OG recommendation; X’s large card supports ~2:1.  -->
 
   <meta name="theme-color" content="#0ea5e9" />
 
@@ -40,16 +44,18 @@
     @media (prefers-color-scheme: light){
       :root{ --bg:#ffffff; --panel:#f6f7fb; --text:#101420; --muted:#546073; }
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
+
+    /* Match index: line-height and fixed gradient layer */
     body{
       margin:0;
-      font-family: "Public Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      font-family:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color:var(--text);
-      line-height:1.55;
-      background: var(--bg);
+      line-height:1.65;
+      background:var(--bg);
     }
-    /* Non-repeating gradient field (same feel as index) */
     body::before{
       content:"";
       position:fixed; inset:0; z-index:-1; pointer-events:none;
@@ -57,26 +63,24 @@
         radial-gradient(1200px 800px at 80% -20%, rgba(14,165,233,.14), transparent 60%),
         radial-gradient(900px 700px at 10% -10%, rgba(34,197,94,.12), transparent 60%),
         conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(34,197,94,.08) 55%, transparent 75%);
-      background-repeat: no-repeat, no-repeat, no-repeat;
-      background-position: 80% -20%, 10% -10%, 80% 10%;
-      background-size: 1600px 1100px, 1200px 900px, 240% 240%;
+      background-repeat:no-repeat,no-repeat,no-repeat;
+      background-position:80% -20%,10% -10%,80% 10%;
+      background-size:1600px 1100px,1200px 900px,240% 240%;
     }
 
-    /* Layout utilities */
-    .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-    .grid{display:grid;gap:18px;grid-template-columns:repeat(12,minmax(0,1fr))}
+    /* Layout utilities (match index spacing) */
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+    .grid{display:grid;gap:22px;grid-template-columns:repeat(12,minmax(0,1fr))}
     @media (min-width:760px){
       .col-8{grid-column:span 8}
       .col-4{grid-column:span 4}
       .col-6{grid-column:span 6}
       .col-12{grid-column:span 12}
     }
-    @media (max-width:759px){
-      .col-8,.col-4,.col-6,.col-12{grid-column:span 12}
-    }
+    @media (max-width:759px){ .col-8,.col-4,.col-6,.col-12{grid-column:span 12} }
     .muted{color:var(--muted)}
 
-    /* Header / Nav (cohesive with index) */
+    /* Header identical vibe to index */
     header{
       position:sticky; top:0; z-index:10;
       backdrop-filter:saturate(180%) blur(10px);
@@ -84,57 +88,55 @@
       border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent);
     }
     .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-    .brand{display:inline-flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
-    .logo{width:32px;height:32px}
+    .brand{display:inline-flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px;text-decoration:none;color:var(--text)}
+    .logo{width:32px;height:32px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 18px 2px rgba(18,251,210,.25)}
     nav a{padding:8px 12px;border-radius:10px;font-weight:600;color:var(--muted);text-decoration:none}
     nav a:hover,nav a:focus{color:var(--text);background:color-mix(in oklab,var(--panel) 70%, transparent);outline:none}
 
     /* Page sections */
-    main{padding:30px 0 60px}
+    main{padding:60px 0 80px}
     .kicker{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
     .headline{font-size:clamp(28px,4.5vw,42px);line-height:1.08;margin:6px 0 6px;letter-spacing:-.01em}
-    .deck{font-size:1.05rem;color:var(--muted);margin:6px 0 14px}
+    .deck{font-size:1.05rem;color:var(--muted);margin:6px 0 16px}
     .byline{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:.95rem;color:var(--muted)}
     .byline time{opacity:.9}
     .meta-dot::before{content:"•";margin:0 8px;opacity:.6}
 
-    /* Cards and panels */
+    /* Cards / panels */
     .panel{background:var(--panel);border:1px solid color-mix(in oklab,var(--text) 8%, transparent);border-radius:var(--radius)}
-    .panel.pad{padding:20px}
-    .panel:hover{box-shadow:0 0 0 1px color-mix(in oklab,var(--ring) 50%, transparent), 0 10px 30px rgba(0,0,0,.18)}
+    .panel.pad{padding:22px}
+    .panel:hover{box-shadow:0 0 0 1px color-mix(in oklab,var(--ring) 50%, transparent),0 10px 30px rgba(0,0,0,.18)}
 
-    .lead-media{
-      width:100%;aspect-ratio:16/9;border-radius:16px;
-      background:linear-gradient(135deg, rgba(125,211,252,.1), rgba(34,197,94,.12));
+    /* Lead image as real <img> (no CLS) */
+    figure.lead{
+      margin:0; width:100%;
+      border-radius:16px; overflow:hidden;
       border:1px solid color-mix(in oklab,var(--text) 8%, transparent);
-      display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700;
+      background:linear-gradient(135deg, rgba(125,211,252,.1), rgba(34,197,94,.12));
     }
+    figure.lead img{
+      display:block; width:100%; height:auto; /* responsive */
+      aspect-ratio: 1200 / 630;               /* reserve space if width/height omitted */
+    }
+    figcaption{color:var(--muted);font-size:.9rem;margin-top:6px}
 
-    article .article-body p{margin:0 0 14px}
-    article .article-body h2{font-size:1.2rem;margin:24px 0 10px}
-
-    /* Sidebar lists */
+    /* Sidebar / river */
     .side-list{list-style:none;padding:0;margin:0}
     .side-list li{padding:10px 0;border-bottom:1px solid color-mix(in oklab,var(--text) 8%, transparent)}
     .side-list li:last-child{border-bottom:none}
     .tag-pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid color-mix(in oklab,var(--text) 12%, transparent);font-size:.85rem;margin:4px 6px 0 0;color:var(--muted)}
-
-    /* River grid */
     .river-card{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
-    .thumb{
-      width:100%;aspect-ratio:4/3;border-radius:12px;background:linear-gradient(135deg, rgba(125,211,252,.18), rgba(34,197,94,.18));
-      border:1px solid color-mix(in oklab,var(--text) 8%, transparent);
-    }
+    .thumb{width:100%;aspect-ratio:4/3;border-radius:12px;background:linear-gradient(135deg, rgba(125,211,252,.18), rgba(34,197,94,.18));border:1px solid color-mix(in oklab,var(--text) 8%, transparent)}
     .river-card h3{margin:0 0 4px;font-size:1.02rem}
     .river-card p{margin:0;color:var(--muted);font-size:.95rem}
     @media (max-width:540px){ .river-card{grid-template-columns:1fr} }
 
     /* Footer */
-    footer{border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent);padding:24px 0 56px;color:var(--muted)}
+    footer{border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent);padding:28px 0 64px;color:var(--muted)}
     .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
   </style>
 
-  <!-- JSON-LD structured data for the featured article (NewsArticle) -->
+  <!-- Structured data for the featured article -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -142,16 +144,14 @@
     "headline": "The Ouroboros Problem: When AI Starts Eating Its Own Tail",
     "datePublished": "2025-10-30T12:00:00-07:00",
     "dateModified": "2025-10-30T12:00:00-07:00",
-    "author": {
-      "@type": "Person",
-      "name": "William Furtado"
-    },
+    "author": {"@type":"Person","name":"William Furtado"},
     "publisher": {
       "@type": "Organization",
       "name": "Freethought",
-      "logo": { "@type": "ImageObject", "url": "https://freethought.me/Freethought_small.png" }
+      "logo": {"@type":"ImageObject","url":"https://freethought.me/Freethought_small.png"}
     },
-    "description": "As AI-generated text, images, and music fill the web, newer models start learning from that content. The loop leads to sameness and, in the worst case, model collapse.",
+    "image": "https://freethought.me/AIOuroboros.png",
+    "description": "As AI-generated content floods the web, newer models start learning from that content. The loop leads to sameness and, in the worst case, model collapse.",
     "mainEntityOfPage": "https://freethought.me/blog.html"
   }
   </script>
@@ -174,13 +174,13 @@
   </header>
 
   <main id="main" class="container">
-    <!-- Lead story + sidebar -->
-    <section class="grid" aria-label="Top stories">
+    <section class="grid" aria-label="Top story">
       <article class="col-8">
         <div class="panel pad">
           <div class="kicker">Analysis</div>
           <h1 class="headline">The Ouroboros Problem: When AI Starts Eating Its Own Tail</h1>
           <p class="deck">As AI-generated words, images, and music flood the web, newer models begin to learn from the output of older ones. The result is sameness, stagnation, and, in the worst case, model collapse.</p>
+
           <div class="byline">
             <span>By <strong>William Furtado</strong></span>
             <span class="meta-dot"></span>
@@ -189,23 +189,24 @@
             <span>6 min read</span>
           </div>
 
-          <div class="lead-media" aria-label="Lead image placeholder">
-            <span>Lead Image</span>
-          </div>
+          <!-- Real image instead of placeholder -->
+          <figure class="lead">
+            <!-- If you keep a space in the filename on server, use /AIOuroboros%20.png instead -->
+            <img src="/AIOuroboros.png"
+                 alt="Ouroboros encircling a knot-like emblem — a metaphor for AI feeding on its own output"
+                 width="1200" height="630" decoding="async" fetchpriority="high" />
+          </figure>
+          <!-- Setting width/height (or aspect-ratio) prevents layout shift.  -->
 
           <div class="article-body" style="margin-top:16px">
-            <p>“Don’t worry, the Ouroboros of AI is slowly eating itself,” the tweet said. The image is vivid, and the risk is real. As editors, creators, and platforms run more content through AI filters, newer models start to learn from older models’ output. The loop tightens. The result is not superintelligence. It is sameness and a slow loss of signal.</p>
+            <p>“Don’t worry, the Ouroboros of AI is slowly eating itself,” my tweet said. The image is vivid, and the risk is real. As editors, creators, and platforms run more content through AI filters, newer models start to learn from older models’ output. The loop tightens. The result is not superintelligence. It is sameness and a slow loss of signal.</p>
 
             <p>Researchers have a term for it: model collapse. When systems repeatedly train on machine-made data, they begin to forget the true distribution of language and images. Rare events fade first. Over time, outputs drift toward safe averages. The machine sounds confident while knowing less.</p>
 
             <p>This pressure comes from two trends. First, synthetic content is cheap and everywhere. Second, the stock of clean, licensed human data is limited. Together they push teams to rely on generated text and images in training sets. That choice can be safe if you control the mix and keep provenance, but unsafe if you do not.</p>
 
-            <p>You can see the symptoms. Novelty drops. Styles converge. Calibration erodes as confidence climbs while accuracy stalls. Robustness falls off when prompts or domains shift even a little. These are practical problems, not theory.</p>
-
             <h2>How to reduce the risk</h2>
             <p>Control the feedback loop. Keep clean holdouts that never see synthetic data. Label provenance for every record: human, human-edited, model-generated, mixed. Cap the synthetic share by epoch and print it in your reports. Inject fresh human signals on a regular cadence. Push structural variety, and deduplicate across runs.</p>
-
-            <p>Most of this is routine hygiene. The hard part is discipline. Treat freshness and diversity as first-class items in your training budget. If you do, you protect the long tail of knowledge and style that makes models useful in the first place.</p>
 
             <p>The internet thrived on variety. If we let models learn from an edited, uniform web, we flatten the very thing that made the web interesting. The Ouroboros is a loop. Good data practice is how you break it.</p>
 
@@ -243,11 +244,9 @@
       </aside>
     </section>
 
-    <!-- River of latest posts (placeholders you can replace) -->
+    <!-- River of latest posts (placeholders) -->
     <section class="grid" aria-label="Latest">
-      <div class="col-12">
-        <h2 class="kicker" style="margin:24px 0 6px">Latest</h2>
-      </div>
+      <div class="col-12"><h2 class="kicker" style="margin:24px 0 6px">Latest</h2></div>
 
       <article class="col-6 panel pad river-card">
         <div class="thumb" aria-hidden="true"></div>
@@ -284,14 +283,17 @@
   </main>
 
   <footer>
-    <div class="container">
+    <div class="container" style="text-align:center">
       <small>© <span id="year">2025</span> Freethought.me • All rights reserved.</small>
     </div>
   </footer>
 
   <script>
-    // update year without frameworks
+    // Update year
     document.getElementById('year').textContent = new Date().getFullYear();
+    // If you keep the space in the filename, you can also do:
+    // document.querySelector('meta[property="og:image"]').setAttribute('content', encodeURI('/AIOuroboros .png'));
+    // document.querySelector('img[alt^="Ouroboros"]').src = encodeURI('/AIOuroboros .png'); // encodes space(s). 
   </script>
 </body>
 </html>
