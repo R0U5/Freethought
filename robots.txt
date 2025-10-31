@@ -20,6 +20,5 @@ Disallow: /
 User-agent: ClaudeBot
 Disallow: /
 
-# Fallback
 User-agent: *
 Allow: /
