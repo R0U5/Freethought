@@ -13,9 +13,6 @@
   <meta property="og:url" content="https://freethought.me/" />
   <meta property="og:image" content="https://freethought.me/Freethought_small.png" />
   <meta name="theme-color" content="#0ea5e9" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -42,7 +39,9 @@
     }
 
     *{ box-sizing:border-box }
-    html,body{ height:100% }
+    html,body{
+  font-family: Calibri, "Segoe UI", Candara, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+   height:100% }
 
     /* Base page styles — loosened line-height for readability */
     body{
@@ -59,8 +58,8 @@
       position:fixed; inset:0; z-index:-1; pointer-events:none;
       background:
         radial-gradient(1200px 800px at 80% -20%, rgba(14,165,233,.14), transparent 60%),
-        radial-gradient(900px 700px at 10% -10%, rgba(34,197,94,.12), transparent 60%),
-        conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(34,197,94,.08) 55%, transparent 75%);
+        radial-gradient(900px 700px at 10% -10%, rgba(10,100,188,.12), transparent 60%),
+        conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(10,100,188,.08) 55%, transparent 75%);
       background-repeat: no-repeat, no-repeat, no-repeat;
       background-position: 80% -20%, 10% -10%, 80% 10%;
       background-size: 1600px 1100px, 1200px 900px, 240% 240%;
@@ -195,21 +194,20 @@
     <div class="container nav" role="navigation" aria-label="Primary">
       <a class="brand" href="#home" aria-label="Freethought home">
         <img class="logo" src="/Freethought_small.png" alt="" width="64" height="64" decoding="async" fetchpriority="high" />
-        <span>Freethought<span style="color:var(--accent)">.me</span></span>
+        <span>Freethought<span style="color:#0A64BC ">.me</span></span>
       </a>
       <nav>
         <a href="\blog">Blog</a>
       </nav>
     </div>
   </header>
-
   <main id="main">
     <!-- ABOUT (glass card + panels) -->
     <section id="about" class="section">
       <div class="glass-wrap">
         <section class="glass-card" aria-label="About Freethought">
           <div class="kicker"></div>
-          <h1>2B models. Sharp tooling.<span style="color:#00a37a"> Provable results.</span></h1>
+          <h1>2B models. Sharp tooling.<span style="color:#0A64BC "> Provable results.</span></h1>
           <p class="lead">
             We are a small AI consultancy delivering precise tooling and competitive custom models at high efficiency.
             We build models like <strong>FreethoughtGPT</strong> using our in-house training pipelines, then stress-test with a rigorous bank of real tasks.
@@ -222,17 +220,17 @@
               Email
             </a>
           </div>
-
           <div class="about-grid">
             <div class="about-panel">
-              <h3>What we do</h3>
+              <h3><span style="color:#0A64BC ">What we do</h3>
               <p>
                 • Custom creation of datasets with strict quality gates.<br />
                 • Evaluation harnesses with clear, precise metrics.<br />
-                • Training that avoids overfitting and prefers efficiency over wasted compute.
+                • Training that prefers efficiency over wasted compute.<br />
+                • Strong, portable Models that can be integrated anywhere.
               </p>
               <hr class="divider" />
-
+              <br>
               <!-- NEW: Socials moved into a compact professional “Connect” row -->
               <div class="connect" aria-label="Social links">
                 <span class="label">Connect</span>
@@ -254,13 +252,22 @@
                     <path fill="currentColor" d="M6.898 0L5.682 2.799H3.877v2.523h.695L5.277 9.8H4.172l1.46 8.23.938-.01L7.512 24h8.918l.062-.4.88-5.58.888.01 1.46-8.231h-1.056l.705-4.477h.756V2.8h-1.918L16.99 0H6.898zm.528.805h9.043l.771 1.78H6.652l.774-1.78zm-2.75 2.797H19.32v.92H4.676v-.92zm.453 6.998h13.635l-1.176 6.62-5.649-.06-5.636.06-1.174-6.62z"/>
                   </svg>
                 </a>
+                <!-- Hugging Face -->
+                <a class="icon-btn" href="https://huggingface.co/R0U5" target="_blank" rel="noopener" aria-label="Hugging Face">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" role="img">
+                    <path fill="currentColor" d="M25.777 19.183c.504.374 1.21-.6.966-1.029c-2.452-4.251-5.342-6.084-7.831-5.646c-2.488.438-4.576 3.15-5.427 7.983c-.081.486.915 1.161 1.262.637c1.304-1.972 3.101-2.98 5.097-3.333c2-.353 4.034-.019 5.933 1.388"></path>
+                    <path fill="currentColor" d="M34.177 17.702c1.304-1.972 3.099-2.98 5.099-3.334c2-.353 4.032-.018 5.932 1.389c.504.374 1.212-.6.968-1.029c-2.454-4.25-5.342-6.085-7.831-5.646c-2.488.438-4.576 3.15-5.427 7.983c-.086.487.912 1.161 1.259.637"></path>
+                    <path fill="currentColor" d="M44.231 27.729c.415-1.065-.546-1.97-1.303-1.214c-6.318 6.294-14.319 7.675-22.361 3.942c-.968-.451-1.563.728-.809 1.586c2.817 3.213 7.788 5.635 13.435 4.64c5.645-.995 9.488-4.97 11.038-8.954"></path>
+                    <path fill="currentColor" d="M61.945 48.302c-.293-2.939-1.868-5.457-4.293-7.103A27.86 27.86 0 0 0 60 30.001C60 14.536 47.464 2 32 2S4 14.536 4 30.001c0 3.984.847 7.768 2.348 11.198c-2.425 1.646-4 4.163-4.293 7.103c-.4 4.021 1.44 8.654 4.28 10.773c3.243 2.42 10.667 3.756 17.938 2.357c3.639-.7 4.203-2.665 3.385-3.782c1.416.223 2.863.35 4.342.35s2.926-.127 4.342-.35c-.818 1.117-.254 3.082 3.385 3.782c7.271 1.398 14.695.063 17.938-2.357c2.84-2.119 4.681-6.752 4.28-10.773M23.34 60.12c-7.296 1.017-13.241-.036-16.071-2.147C3.198 54.934.739 45.008 8.737 41.25c3.643-1.712 9.539-3.189 10.411-1.18c1.249 2.879-4.183 3.245-4.183 3.245s4.354.628 10.73-.122c1.739-.202 2.987 1.918.927 3.141c-1.801 1.069-7.864 1.452-7.864 1.452s3.263.104 7.895-.279c3.729-.311 4.062 3.901-.856 4.476c-1.894.222-7.008.563-7.008.563s3.526.661 7.168.148c3.253-.458 3.108 2.839-1.523 3.449c-2.205.291-5.721.352-5.721.352s3.158.544 4.878.319c4.405-.579 3.948 2.72-.251 3.306m5.832-4.795c.577-.991.313-2.133-.582-2.623c3.737-1.139 2.705-5.688-.219-5.842c2.235-1.475.334-5.107-2.361-4.656c-2.299.385-6.287.379-6.287.379c.006-.01 1.283-.514.96-2.193c-.335-1.735-2.643-4.176-12.114-.367A25.306 25.306 0 0 1 6.5 30.001C6.5 15.939 17.939 4.5 32 4.5s25.5 11.439 25.5 25.501c0 3.559-.745 6.942-2.068 10.021c-9.471-3.809-11.779-1.368-12.114.367c-.323 1.68.954 2.184.96 2.193c0 0-3.988.006-6.287-.379c-2.695-.451-4.597 3.182-2.361 4.656c-2.924.154-3.956 4.703-.219 5.842c-.895.49-1.159 1.632-.582 2.623c-.931.106-1.872.176-2.829.176s-1.898-.07-2.828-.175m27.559 2.648c-2.831 2.111-8.774 3.164-16.071 2.147c-4.199-.586-4.656-3.885-.249-3.306c1.72.225 4.878-.319 4.878-.319s-3.516-.061-5.721-.352c-4.632-.61-4.776-3.907-1.523-3.449c3.642.513 7.168-.148 7.168-.148s-5.114-.342-7.008-.563c-4.918-.574-4.586-4.786-.856-4.476c4.632.383 7.895.279 7.895.279s-6.063-.383-7.864-1.452c-2.061-1.223-.813-3.343.927-3.141c6.376.75 10.729.122 10.729.122s-5.432-.366-4.183-3.245c.872-2.01 6.769-.532 10.411 1.18c7.998 3.758 5.539 13.684 1.467 16.723"></path>
+                </svg>
+                </a>
+
               </div>
             </div>
-
             <div class="about-panel">
-              <h3>How we work</h3>
+             <h3><span style="color:#0A64BC ">How we work</h3>
               <p>We prefer simple, auditable code and transparent metrics. Every feature that affects training or evaluation is wired thoughtfully, with logs that explain what the system did and why.</p>
-              <p>Start fast. Ship early. Iterate: keep what improves outcomes; cut what doesn’t.</p>
+              <i>Start fast. Ship early. Iterate: keep what improves outcomes; cut what doesn’t.</i>
             </div>
           </div>
         </section>
@@ -279,4 +286,3 @@
   </script>
 </body>
 </html>
-
