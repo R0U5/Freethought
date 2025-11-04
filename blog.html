@@ -11,51 +11,90 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://freethought.me/blog.html" />
   <meta name="theme-color" content="#0A64BC" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
-
   <style>
-    :root{ --bg:#07080b; --panel:#0f1220; --text:#e7e9ee; --muted:#9aa3b2; --accent:#0ea5e9; --accent2:#22c55e; --ring:#7dd3fc; --radius:18px; --maxw:1120px; }
-    @media (prefers-color-scheme: light){ :root{ --bg:#ffffff; --panel:#f6f7fb; --text:#101420; --muted:#546073; } }
-    *{ box-sizing:border-box }
+    :root{
+      --bg:#07080b; --panel:#0f1220; --text:#e7e9ee; --muted:#9aa3b2;
+      --accent:#0ea5e9; --ring:#7dd3fc; --radius:18px; --maxw:1120px;
+      --border: color-mix(in oklab,var(--text) 10%, transparent);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#ffffff; --panel:#f6f7fb; --text:#101420; --muted:#546073; --border: color-mix(in oklab,var(--text) 15%, transparent); }
+    }
+    *{ box-sizing: border-box }
     html,body{ height:100% }
-    body{ margin:0; font-family:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color:var(--text); line-height:1.65; background:var(--bg) }
+    body{
+      margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); line-height:1.6; background:var(--bg);
+    }
     body::before{
       content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
       background:
         radial-gradient(1200px 800px at 80% -20%, rgba(14,165,233,.14), transparent 60%),
         radial-gradient(900px 700px at 10% -10%, rgba(34,197,94,.12), transparent 60%),
         conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(34,197,94,.08) 55%, transparent 75%);
-      background-repeat:no-repeat,no-repeat,no-repeat; background-position:80% -20%,10% -10%,80% 10%; background-size:1600px 1100px,1200px 900px,240% 240%;
+      background-repeat:no-repeat,no-repeat,no-repeat;
+      background-position:80% -20%,10% -10%,80% 10%;
+      background-size:1600px 1100px,1200px 900px,240% 240%;
     }
     .container{ max-width:var(--maxw); margin:0 auto; padding:0 28px }
-    header{ position:sticky; top:0; z-index:10; backdrop-filter:saturate(180%) blur(10px); background:color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent) }
+    header{
+      position:sticky; top:0; z-index:10; backdrop-filter:saturate(180%) blur(10px);
+      background:color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom:1px solid var(--border);
+    }
     .nav{ display:flex; align-items:center; justify-content:space-between; height:68px }
     .brand{ display:inline-flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px; text-decoration:none; color:var(--text) }
     .logo{ width:32px; height:32px; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 18px 2px rgba(18,251,210,.25) }
     nav a{ padding:8px 12px; border-radius:10px; font-weight:600; color:var(--muted); text-decoration:none }
-    nav a:hover,nav a:focus{ color:var(--text); background:color-mix(in oklab,var(--panel) 70%, transparent); outline:none }
+    nav a:hover, nav a:focus{ color:var(--text); background:color-mix(in oklab,var(--panel) 70%, transparent); outline:none }
     main{ padding:60px 0 80px }
-    .grid{ display:grid; gap:22px; grid-template-columns:repeat(12, minmax(0,1fr)) }
-    @media (min-width:760px){ .col-8{ grid-column:span 8 } .col-4{ grid-column:span 4 } .col-6{ grid-column:span 6 } .col-12{ grid-column:span 12 } }
-    @media (max-width:759px){ .col-8,.col-4,.col-6,.col-12{ grid-column:span 12 } }
-    .panel{ background:var(--panel); border:1px solid color-mix(in oklab,var(--text) 8%, transparent); border-radius:var(--radius) }
-    .panel.pad{ padding:22px }
-    .card{ display:grid; grid-template-columns:140px 1fr; gap:14px; align-items:center }
-    .thumb{ width:100%; aspect-ratio: 16/9; border-radius:12px; background:linear-gradient(135deg, rgba(125,211,252,.18), rgba(34,197,94,.18)); border:1px solid color-mix(in oklab,var(--text) 8%, transparent) }
-    .muted{ color:var(--muted) }
-    .post-title{ margin:0 0 6px; font-size:1.15rem }
-    .tag-pill{ display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid color-mix(in oklab,var(--text) 12%, transparent); font-size:.85rem; margin:4px 6px 0 0; color:var(--muted) }
-    footer{ border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent); padding:28px 0 64px; color:var(--muted) }
+    h1{ font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.2rem); margin: 10px 0 18px }
+
+    /* POSTS */
+    .posts{ display:grid; gap:22px }
+    .post{ list-style:none }
+
+    /* Entire card is clickable, but we don’t blanket-underline text */
+    .post-link{
+      display:grid; gap:18px; align-items:center;
+      grid-template-columns: minmax(260px, 360px) 1fr;
+      padding:16px; border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(12,16,32,.92), rgba(12,16,32,.70));
+      border:1px solid var(--border);
+      color: inherit; text-decoration: none;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .post-link:hover{ transform: translateY(-1px); box-shadow:0 20px 40px rgba(0,0,0,.30); border-color: color-mix(in oklab,var(--ring) 35%, var(--border)); }
+    .post-link:focus-visible{ outline:2px solid var(--ring); outline-offset:3px }
+    .post-link:visited .title{ opacity:.95 }
+
+    /* Thumbs always the same ratio and never distort */
+    .thumb{ aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:#0a0f1f; border:1px solid var(--border) }
+    .thumb img{ width:100%; height:100%; display:block; object-fit:cover; } /* MDN: object-fit cover */
+
+    .copy{ display:flex; flex-direction:column; gap:6px }
+    .eyebrow{ color:var(--muted); font-size:.92rem }
+    .title{ margin:0; font-weight:800; letter-spacing:.2px; line-height:1.25; font-size: clamp(1.05rem, 1rem + .4vw, 1.35rem); }
+    /* underline only on hover/focus for headline */
+    .post-link:hover .title, .post-link:focus-visible .title{
+      text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px;
+    }
+    .dek{ color:var(--muted); margin:4px 0 6px; max-width: 70ch }
+    .tags{ display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:6px 0 0; list-style:none }
+    .tag{ padding:6px 10px; border-radius:999px; border:1px solid var(--border); font-size:.85rem; color:var(--muted) }
+
+    @media (max-width: 900px){
+      .post-link{ grid-template-columns: 1fr }
+    }
+
+    footer{ border-top:1px solid var(--border); padding:28px 0 64px; color:var(--muted) }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav" role="navigation" aria-label="Primary">
       <a class="brand" href="/index.html" aria-label="Freethought home">
-        <img class="logo" src="/freethought-small.pngg" alt="" width="64" height="64" decoding="async" fetchpriority="high" />
+        <img class="logo" src="/Freethought_small.png" alt="" width="32" height="32" decoding="async" fetchpriority="high" />
         <span>Freethought<span style="color:#0A64BC">.me</span></span>
       </a>
       <nav>
@@ -65,53 +104,67 @@
       </nav>
     </div>
   </header>
+
   <main id="main" class="container">
-    <h1 style="margin:10px 0 14px">Freethought Blog</h1>
-    <section class="grid">
-      <article class="col-12 panel pad">
-        <a class="card" href="/ai-ouroboros-is-eating-itself.html">
-          <img class="thumb" src="/ai-ouroboros-eating-itself-chatgpt-logo.png" alt="Ouroboros article thumbnail" />
-          <div>
-            <h2 class="post-title">The Ouroboros Problem: When AI Starts Eating Its Own Tail</h2>
-            <div class="muted">Oct 30, 2025 · Analysis</div>
-            <p class="muted">As AI-generated content floods the web, newer models learn from that content. The loop leads to sameness and, in the worst case, collapse.</p>
-            <div><span class="tag-pill">AI</span><span class="tag-pill">Data</span><span class="tag-pill">Evaluation</span></div>
+    <h1>Some free thoughts.</h1>
+    <section class="posts">
+
+      <article class="post">
+        <a class="post-link" href="/ai-ouroboros-is-eating-itself.html">
+          <figure class="thumb">
+            <img src="/ai-ouroboros-eating-itself-chatgpt-logo.png" alt="Ouroboros article thumbnail" width="640" height="360" loading="lazy" decoding="async" />
+          </figure>
+          <div class="copy">
+            <div class="eyebrow">Oct 30, 2025 · Analysis</div>
+            <h2 class="title">The Ouroboros Problem: When AI Starts Eating Its Own Tail</h2>
+            <p class="dek">As AI-generated content floods the web, newer models learn from that content. The loop leads to sameness and, in the worst case, collapse.</p>
+            <ul class="tags">
+              <li class="tag">AI</li><li class="tag">Data</li><li class="tag">Evaluation</li>
+            </ul>
           </div>
         </a>
       </article>
 
-      <article class="col-12 panel pad">
-        <a class="card" href="/ai-in-gaming.html">
-          <img class="thumb" src="/ai-gaming-description-escape-from-duckov.png" alt="AI in gaming thumbnail" />
-          <div>
-            <h2 class="post-title">AI in Gaming: Depth or Slop?</h2>
-            <div class="muted">Nov 4, 2025 · Opinion</div>
-            <p class="muted">AI might deepen quests and NPCs—or flood stores with slop. Taste and craft will decide which future wins.</p>
-            <div><span class="tag-pill">AI</span><span class="tag-pill">Gaming</span><span class="tag-pill">NPCs</span></div>
+      <article class="post">
+        <a class="post-link" href="/the-future-of-AI-in-gaming.html">
+          <figure class="thumb">
+            <img src="/ai-gaming-description-escape-from-duckov.png" alt="AI in gaming thumbnail" width="640" height="360" loading="lazy" decoding="async" />
+          </figure>
+          <div class="copy">
+            <div class="eyebrow">Nov 4, 2025 · Opinion</div>
+            <h2 class="title">AI in Gaming: Depth or Slop?</h2>
+            <p class="dek">AI might deepen quests and NPC interactions, or flood stores with slop. Taste and craft will decide which future wins.</p>
+            <ul class="tags">
+              <li class="tag">AI</li><li class="tag">Gaming</li><li class="tag">NPCs</li>
+            </ul>
           </div>
         </a>
       </article>
 
-      <article class="col-12 panel pad">
-        <a class="card" href="/my-npc-coworker.html">
-          <img class="thumb" src="/my-npc-coworker-promt-for-congrats.png" alt="NPC coworker thumbnail" />
-          <div>
-            <h2 class="post-title">My NPC Co-Worker</h2>
-            <div class="muted">Nov 3, 2025 · Opinion</div>
-            <p class="muted">A templated work-anniversary “congrats” showed how fast we trade individuality for convenience.</p>
-            <div><span class="tag-pill">Opinion</span><span class="tag-pill">Work Culture</span><span class="tag-pill">AI</span></div>
+      <article class="post">
+        <a class="post-link" href="/my-npc-coworker.html">
+          <figure class="thumb">
+            <img src="/my-npc-coworker-promt-for-congrats.png" alt="NPC coworker thumbnail" width="640" height="360" loading="lazy" decoding="async" />
+          </figure>
+          <div class="copy">
+            <div class="eyebrow">Nov 3, 2025 · Opinion</div>
+            <h2 class="title">My NPC Co-Worker</h2>
+            <p class="dek">A templated work-anniversary “congrats” showed how fast we trade individuality for convenience.</p>
+            <ul class="tags">
+              <li class="tag">Opinion</li><li class="tag">Work Culture</li><li class="tag">AI</li>
+            </ul>
           </div>
         </a>
       </article>
+
     </section>
   </main>
+
   <footer>
     <div class="container" style="text-align:center">
       <small>© <span id="year">2025</span> Freethought.me • All rights reserved.</small>
     </div>
   </footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
