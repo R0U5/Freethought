@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3198756298645695" crossorigin="anonymous"></script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>My NPC Co-Worker</title>
+  <meta name="description" content="How a templated “congrats” revealed the trade we’re making between convenience and genuine human connection." />
+  
+
+  <meta property="og:title" content="My NPC Co-Worker" />
+  <meta property="og:description" content="How a templated “congrats” revealed the trade we’re making between convenience and genuine human connection." />
+  <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freethought.me/my-npc-coworker.html" />
+  <meta property="og:image" content="/Freethought_small.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="/Freethought_small.png" />
+
+  <meta name="theme-color" content="#0A64BC" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07080b;
+      --panel:#0f1220;
+      --text:#e7e9ee;
+      --muted:#9aa3b2;
+      --accent:#0ea5e9;
+      --accent2:#22c55e;
+      --ring:#7dd3fc;;
+      --radius:18px;
+      --maxw:1120px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#ffffff; --panel:#f6f7fb; --text:#101420; --muted:#546073; }
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    /* Match index: line-height and fixed gradient layer */
+    body{
+      margin:0;
+      font-family:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      line-height:1.65;
+      background:var(--bg);
+    }
+    body::before{
+      content:"";
+      position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:
+        radial-gradient(1200px 800px at 80% -20%, rgba(14,165,233,.14), transparent 60%),
+        radial-gradient(900px 700px at 10% -10%, rgba(34,197,94,.12), transparent 60%),
+        conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(34,197,94,.08) 55%, transparent 75%);
+      background-repeat:no-repeat,no-repeat,no-repeat;
+      background-position:80% -20%,10% -10%,80% 10%;
+      background-size:1600px 1100px,1200px 900px,240% 240%;
+    }
+
+    /* Layout utilities (match index spacing) */
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+    .grid{display:grid;gap:22px;grid-template-columns:repeat(12,minmax(0,1fr))}
+    @media (min-width:760px){
+      .col-8{grid-column:span 8}
+      .col-4{grid-column:span 4}
+      .col-6{grid-column:span 6}
+      .col-12{grid-column:span 12}
+    }
+    @media (max-width:759px){ .col-8,.col-4,.col-6,.col-12{grid-column:span 12} }
+    .muted{color:var(--muted)}
+
+    /* Header identical vibe to index */
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+    .brand{display:inline-flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px;text-decoration:none;color:var(--text)}
+    .logo{width:32px;height:32px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 18px 2px rgba(18,251,210,.25)}
+    nav a{padding:8px 12px;border-radius:10px;font-weight:600;color:var(--muted);text-decoration:none}
+    nav a:hover,nav a:focus{color:var(--text);background:color-mix(in oklab,var(--panel) 70%, transparent);outline:none}
+
+    /* Page sections */
+    main{padding:60px 0 80px}
+    .kicker{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .headline{font-size:clamp(28px,4.5vw,42px);line-height:1.08;margin:6px 0 6px;letter-spacing:-.01em}
+    .deck{font-size:1.05rem;color:var(--muted);margin:6px 0 16px}
+    .byline{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:.95rem;color:var(--muted)}
+    .byline time{opacity:.9}
+    .meta-dot::before{content:"•";margin:0 8px;opacity:.6}
+
+    /* Cards / panels */
+    .panel{background:var(--panel);border:1px solid color-mix(in oklab,var(--text) 8%, transparent);border-radius:var(--radius)}
+    .panel.pad{padding:22px}
+    .panel:hover{box-shadow:0 0 0 1px color-mix(in oklab,var(--ring) 50%, transparent),0 10px 30px rgba(0,0,0,.18)}
+
+    /* Lead image as real <img> (no CLS) */
+    figure.lead{
+      margin:0; width:100%;
+      border-radius:16px; overflow:hidden;
+      border:1px solid color-mix(in oklab,var(--text) 8%, transparent);
+      background:linear-gradient(135deg, rgba(125,211,252,.1), rgba(34,197,94,.12));
+    }
+    figure.lead img{
+      display:block; width:100%; height:auto; /* responsive */
+      aspect-ratio: 1200 / 630;               /* reserve space if width/height omitted */
+    }
+    figcaption{color:var(--muted);font-size:.9rem;margin-top:6px}
+
+    /* Sidebar / river (not used on this single-article page but kept for parity) */
+    .side-list{list-style:none;padding:0;margin:0}
+    .side-list li{padding:10px 0;border-bottom:1px solid color-mix(in oklab,var(--text) 8%, transparent)}
+    .side-list li:last-child{border-bottom:none}
+    .tag-pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid color-mix(in oklab,var(--text) 12%, transparent);font-size:.85rem;margin:4px 6px 0 0;color:var(--muted)}
+    .river-card{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
+    .thumb{width:100%;aspect-ratio:4/3;border-radius:12px;background:linear-gradient(135deg, rgba(125,211,252,.18), rgba(34,197,94,.18));border:1px solid color-mix(in oklab,var(--text) 8%, transparent)}
+    .river-card h3{margin:0 0 4px;font-size:1.02rem}
+    .river-card p{margin:0;color:var(--muted);font-size:.95rem}
+    @media (max-width:540px){ .river-card{grid-template-columns:1fr} }
+
+    /* Footer */
+    footer{border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent);padding:28px 0 64px;color:var(--muted)}
+    .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  
+/* Breadcrumbs */
+.breadcrumbs { margin: 10px 0 18px; font-size:.95rem; color: var(--muted); }
+.breadcrumbs ol { list-style: none; padding: 0; margin: 0; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.breadcrumbs li { display:flex; align-items:center; gap:8px; }
+.breadcrumbs li::after { content: "/"; opacity:.5; margin-left:8px; }
+.breadcrumbs li[aria-current="page"]::after { content: ""; }
+.breadcrumbs a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted color-mix(in oklab,var(--text) 14%, transparent); }
+.breadcrumbs a:hover { color: var(--text); border-bottom-color: currentColor; }
+
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "OpinionNewsArticle",
+    "headline": "My NPC Co-Worker",
+    "datePublished": "2025-11-03T12:00:00-08:00",
+    "dateModified": "2025-11-03T12:00:00-08:00",
+    "author": {"@type":"Person","name":"William Furtado"},
+    "publisher": {
+      "@type": "Organization",
+      "name": "Freethought",
+      "logo": {"@type":"ImageObject","url":"https://freethought.me/Freethought_small.png"}
+    },
+    "image": "https://freethought.me/Freethought_small.png",
+    "description": "A templated work anniversary ‘congrats’ exposed the growing trade between convenience and genuine human connection.",
+    "mainEntityOfPage": "https://freethought.me/my-npc-co-worker.html"
+  }
+  </script>  <link rel="canonical" href="https://freethought.me/my-npc-coworker.html" />
+</head>
+<body>
+  <a href="#main" class="sr-only">Skip to content</a>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="/index.html" aria-label="Freethought home">
+        <img class="logo" src="/Freethought_small.png" alt="" width="64" height="64" decoding="async" fetchpriority="high" />
+        <span>Freethought<span style="color:var(--accent)">.me</span></span>
+      </a>
+      <nav>
+      <nav>
+        <a href="/index.html">Home</a>
+        <a href="/blog.html" aria-current="page">Blog</a>
+        <a href="mailto:williamefurtado@gmail.com">Contact</a>
+      </nav>
+    </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li aria-current="page">My NPC Co-Worker</li>
+      </ol>
+    </nav>
+    <section class="grid" aria-label="Top story">
+      <article class="col-8">
+        <div class="panel pad">
+          <div class="kicker">Opinion</div>
+          <h1 class="headline">My NPC Co-Worker</h1>
+          <p class="deck">A work-anniversary “congrats” that sounded like a template made me realize how fast we’re trading individuality for convenience.</p>
+
+          <div class="byline">
+            <span>By <strong>William Furtado</strong></span>
+            <span class="meta-dot"></span>
+            <time datetime="2025-11-03">November 3, 2025</time>
+            <span class="meta-dot"></span>
+            <span>4 min read</span>
+          </div>
+
+          <figure class="lead">
+            <img src="/my-npc-coworker-promt-for-congrats.png"
+                 alt="Freethought logo on a dark blue gradient background."
+                 width="1200" height="630" decoding="async" fetchpriority="high" />
+          </figure>
+
+          <div class="article-body" style="margin-top:16px">
+            <article>
+              <p>One day, after four long years of dedication to my job, I received the standard flood of “Happy Anniversary" posts, spurred on by a gentle email reminder from HR to the team. While most were genuine or, at the very least, apathetic to the celebration, one stood out to me amongst the others. It said: “Congrats on your 4th Anniversary — that’s quite a feat!”. </p>
+
+              <p>Aside from the arguably passive-aggressive tone (why is it a feat?!!), what struck me the most was that naughty little em-dash being used. A telltale sign of GPT4/5 and a glaring signal that this person actually chose typing more to prompt the GPT for a message to congratulate me, than to actually just write "congrats!".</p>
+
+              <p>At that moment, I began to understand that a large group of society would prioritize convenience over individuality, even at the most benign levels. While I wanted to say something, I did not out of embarrassment for us both, as this is essentially the social equivalent of getting a Dollar Store pack of Pokémon cards for a Secret Santa Gift.</p>
+
+              <p>If one wonders why the rise of the "NPC" trend is so prevalent nowadays, one only needs to look at the trade-off happening in our daily lives between the ever-perilous balance of convenience vs humanity.</p>
+
+              <p>Write your own words. While they don’t have to be perfect, they have to be yours.</p>
+            </article>
+
+            <div style="margin-top:12px">
+              <span class="tag-pill">Opinion</span>
+              <span class="tag-pill">Work Culture</span>
+              <span class="tag-pill">AI</span>
+              <span class="tag-pill">Convenience vs Humanity</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  
+    <aside class="panel pad" style="margin-top:18px">
+      <h3 style="margin-top:0">More from Freethought</h3>
+      <ul class="side-list">
+        <li><a href="/ai-ouroboros-is-eating-itself.html">The Ouroboros Problem: When AI Starts Eating Its Own Tail</a></li>
+        <li><a href="/the-future-of-AI-in-gaming.html">AI in Gaming: Depth or Slop?</a></li>
+        <li><a href="/my-npc-coworker.html">My NPC Co-Worker</a></li>
+      </ul>
+    </aside>
+
+</main>
+
+  <footer>
+    <div class="container" style="text-align:center">
+      <small>© <span id="year">2025</span> Freethought.me • All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear(); 
+  </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3198756298645695" crossorigin="anonymous"></script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>AI in Gaming: Depth or Slop?</title>
+  <meta name="description" content="AI can deepen quests and NPCs—or flood stores with slop. What happens next depends on taste, restraint, and craft." />
+  <link rel="canonical" href="https://freethought.me/ai-in-gaming.html" />
+
+  <meta property="og:title" content="AI in Gaming: Depth or Slop?" />
+  <meta property="og:description" content="AI can deepen quests and NPCs—or flood stores with slop. What happens next depends on taste, restraint, and craft." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://freethought.me/ai-in-gaming.html" />
+  <meta property="og:image" content="/AI_Game_Description.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="/AI_Game_Description.png" />
+
+  <meta name="theme-color" content="#0A64BC" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07080b;
+      --panel:#0f1220;
+      --text:#e7e9ee;
+      --muted:#9aa3b2;
+      --accent:#0ea5e9;
+      --accent2:#22c55e;
+      --ring:#7dd3fc;;
+      --radius:18px;
+      --maxw:1120px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#ffffff; --panel:#f6f7fb; --text:#101420; --muted:#546073; }
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    /* Match index/blog style */
+    body{
+      margin:0;
+      font-family:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      line-height:1.65;
+      background:var(--bg);
+    }
+    body::before{
+      content:"";
+      position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:
+        radial-gradient(1200px 800px at 80% -20%, rgba(14,165,233,.14), transparent 60%),
+        radial-gradient(900px 700px at 10% -10%, rgba(34,197,94,.12), transparent 60%),
+        conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(34,197,94,.08) 55%, transparent 75%);
+      background-repeat:no-repeat,no-repeat,no-repeat;
+      background-position:80% -20%,10% -10%,80% 10%;
+      background-size:1600px 1100px,1200px 900px,240% 240%;
+    }
+
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+    .grid{display:grid;gap:22px;grid-template-columns:repeat(12,minmax(0,1fr))}
+    @media (min-width:760px){
+      .col-8{grid-column:span 8}
+      .col-4{grid-column:span 4}
+      .col-6{grid-column:span 6}
+      .col-12{grid-column:span 12}
+    }
+    @media (max-width:759px){ .col-8,.col-4,.col-6,.col-12{grid-column:span 12} }
+    .muted{color:var(--muted)}
+
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+    .brand{display:inline-flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px;text-decoration:none;color:var(--text)}
+    .logo{width:32px;height:32px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 18px 2px rgba(18,251,210,.25)}
+    nav a{padding:8px 12px;border-radius:10px;font-weight:600;color:var(--muted);text-decoration:none}
+    nav a:hover,nav a:focus{color:var(--text);background:color-mix(in oklab,var(--panel) 70%, transparent);outline:none}
+
+    main{padding:60px 0 80px}
+    .kicker{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .headline{font-size:clamp(28px,4.5vw,42px);line-height:1.08;margin:6px 0 6px;letter-spacing:-.01em}
+    .deck{font-size:1.05rem;color:var(--muted);margin:6px 0 16px}
+    .byline{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:.95rem;color:var(--muted)}
+    .byline time{opacity:.9}
+    .meta-dot::before{content:"•";margin:0 8px;opacity:.6}
+
+    .panel{background:var(--panel);border:1px solid color-mix(in oklab,var(--text) 8%, transparent);border-radius:var(--radius)}
+    .panel.pad{padding:22px}
+    .panel:hover{box-shadow:0 0 0 1px color-mix(in oklab,var(--ring) 50%, transparent),0 10px 30px rgba(0,0,0,.18)}
+
+    figure.lead{
+      margin:0; width:100%;
+      border-radius:16px; overflow:hidden;
+      border:1px solid color-mix(in oklab,var(--text) 8%, transparent);
+      background:linear-gradient(135deg, rgba(125,211,252,.1), rgba(34,197,94,.12));
+    }
+    figure.lead img{
+      display:block; width:100%; height:auto;
+      aspect-ratio: 1200 / 630;
+    }
+    figcaption{color:var(--muted);font-size:.9rem;margin-top:6px}
+
+    .tag-pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid color-mix(in oklab,var(--text) 12%, transparent);font-size:.85rem;margin:4px 6px 0 0;color:var(--muted)}
+
+    footer{border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent);padding:28px 0 64px;color:var(--muted)}
+    .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "OpinionNewsArticle",
+    "headline": "AI in Gaming: Depth or Slop?",
+    "datePublished": "2025-11-04T00:00:00-08:00",
+    "dateModified": "2025-11-04T00:00:00-08:00",
+    "author": {"@type":"Person","name":"William Furtado"},
+    "publisher": {
+      "@type": "Organization",
+      "name": "Freethought",
+      "logo": {"@type":"ImageObject","url":"https://freethought.me/Freethought_small.png"}
+    },
+    "image": "https://freethought.me/AI_Game_Description.png",
+    "description": "AI can deepen quests and NPCs—or flood stores with slop. What happens next depends on taste, restraint, and craft.",
+    "mainEntityOfPage": "https://freethought.me/ai-in-gaming.html"
+  }
+  </script>
+</head>
+<body>
+  <a href="#main" class="sr-only">Skip to content</a>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="/index.html" aria-label="Freethought home">
+        <img class="logo" src="/Freethought_small.png" alt="" width="64" height="64" decoding="async" fetchpriority="high" />
+        <span>Freethought<span style="color:var(--accent)">.me</span></span>
+      </a>
+            <nav>
+        <a href="/ai-ouroboros-is-eating-itself.html">Home</a>
+        <a href="/ai-in-gaming.html" aria-current="page">AI in Gaming</a>
+        <a href="/my_npc_co_worker.html">My NPC Co‑Worker</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="grid" aria-label="Top story">
+      <article class="col-8">
+        <div class="panel pad">
+          <div class="kicker">Opinion</div>
+          <h1 class="headline">AI in Gaming: Depth or Slop?</h1>
+          <p class="deck">AI can deepen quests and NPCs—or flood stores with slop. What happens next depends on taste, restraint, and craft.</p>
+
+          <div class="byline">
+            <span>By <strong>William Furtado</strong></span>
+            <span class="meta-dot"></span>
+            <time datetime="2025-11-04">November 4, 2025</time>
+            <span class="meta-dot"></span>
+            <span>4 min read</span>
+          </div>
+
+          <figure class="lead">
+            <img src="/AI_Game_Description.png"
+                 alt="Illustration representing AI systems influencing game design and NPC interactions."
+                 width="1200" height="630" decoding="async" fetchpriority="high" />
+          </figure>
+
+          <div class="article-body" style="margin-top:16px">
+            <article>
+              <p>AI in gaming could do two things: enrich play with more varied quests and better NPC interactions, or flood stores with AI-generated asset-store slop. Only time will tell.</p>
+
+              <p>Like it or not, AI is already part of daily life and will likely shape your next favorite game.</p>
+
+              <p>If not the model work, then the writing. Not the writing? Then the NPC barks.</p>
+
+              <p>Splurged on human writers? Congrats: AAA budget, indie ethics.</p>
+
+              <p>The real problem starts when the small developers and the players who support them (already contending with a cacophony of Unity assets that long predates the label of "AI slop"), one could even argue that this is almost entirely responsible for Unity’s negative reputation in some circles.</p>
+
+              <p>I imagine that when these low-effort models start being generated on a large scale, they will start flooding the asset store.</p>
+
+              <p>This means that while indie game devs will see a notable drop in the prices of these assets, they will likely also see a qualitative drop as the AI Ouroboros starts slowly eating itself by training new models using data from previously AI-generated ones.</p>
+
+              <p>Now, the other side of the same coin would be cheap access to assets, improved output via text or model generation, or even systems tied to ChatGPT.</p>
+
+              <p>A great example of this is the Skyrim mods that turn all NPCs into (albeit very easily confused) chatbots, such as Herika and Mantella.</p>
+
+              <p>What this shows me is that the developers with talent, with passion -- the ones with "true grit" will go beyond just surviving; they will flourish as the tools and choices that were previously only available to the largest developers become available to all who want them.</p>
+
+              <p>Given the presence of LLMs in everyday life, from the chatbot at the local marijuana dispensary to using ChatGPT to congratulate co-workers, the future is unavoidable; gaming AI is inevitable; and we can only hope that it will add to our favorite games, and not replace the heart and soul of those who passionately develop them.</p>
+            </article>
+
+            <div style="margin-top:12px">
+              <span class="tag-pill">AI</span>
+              <span class="tag-pill">Gaming</span>
+              <span class="tag-pill">NPCs</span>
+              <span class="tag-pill">Opinion</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="text-align:center">
+      <small>© <span id="year">2025</span> Freethought.me • All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear(); 
+  </script>
+</body>
+</html>
