@@ -2,27 +2,17 @@
 <html lang="en">
 <head>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3198756298645695" crossorigin="anonymous"></script>
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Blog</title>
-  <meta name="description" content="Reporting and analysis on AI." />
-  <link rel="canonical" href="https://freethought.me/blog.html" />
-
-  <meta property="og:title" content="Freethought Blog" />
-  <meta property="og:description" content="Reporting and analysis on AI." />
+  <title>Freethought</title>
+  <meta name="description" content="LLM consulting, datasets, and tooling. Practical, fast, and transparent." />
+  <link rel="canonical" href="https://freethought.me/" />
+  <meta property="og:title" content="Freethought" />
+  <meta property="og:description" content="LLM consulting, datasets, and tooling. Practical, fast, and transparent." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://freethought.me/blog.html" />
-  <meta property="og:image" content="/AIOuroboros.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="/AIOuroboros.png" />
-
-  <meta name="theme-color" content="#0A64BC" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
+  <meta property="og:url" content="https://freethought.me/" />
+  <meta property="og:image" content="https://freethought.me/Freethought_small.png" />
+  <meta name="theme-color" content="#0ea5e9" />
 
   <style>
     :root{
@@ -32,105 +22,153 @@
       --muted:#9aa3b2;
       --accent:#0ea5e9;
       --accent2:#22c55e;
-      --ring:#7dd3fc;;
+      --ring:#7dd3fc;
       --radius:18px;
       --maxw:1120px;
+
+      /* glass + controls */
+      --card-bg: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.14);
+      --shadow-1: rgba(0,0,0,0.35);
+      --shadow-2: rgba(18, 251, 210, 0.25);
+      --btn-bg: rgba(255,255,255,0.08);
+      --btn-bg-hover: rgba(255,255,255,0.14);
     }
     @media (prefers-color-scheme: light){
       :root{ --bg:#ffffff; --panel:#f6f7fb; --text:#101420; --muted:#546073; }
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{ box-sizing:border-box }
+    html,body{
+  font-family: Calibri, "Segoe UI", Candara, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+   height:100% }
 
-    /* Match index: line-height and fixed gradient layer */
+    /* Base page styles — loosened line-height for readability */
     body{
       margin:0;
       font-family:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color:var(--text);
-      line-height:1.65;
-      background:var(--bg);
+      line-height:1.65; /* was 1.55 */
+      background: var(--bg);
     }
+
+    /* Fixed gradient field */
     body::before{
       content:"";
       position:fixed; inset:0; z-index:-1; pointer-events:none;
       background:
         radial-gradient(1200px 800px at 80% -20%, rgba(14,165,233,.14), transparent 60%),
-        radial-gradient(900px 700px at 10% -10%, rgba(34,197,94,.12), transparent 60%),
-        conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(34,197,94,.08) 55%, transparent 75%);
-      background-repeat:no-repeat,no-repeat,no-repeat;
-      background-position:80% -20%,10% -10%,80% 10%;
-      background-size:1600px 1100px,1200px 900px,240% 240%;
+        radial-gradient(900px 700px at 10% -10%, rgba(10,100,188,.12), transparent 60%),
+        conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(10,100,188,.08) 55%, transparent 75%);
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      background-position: 80% -20%, 10% -10%, 80% 10%;
+      background-size: 1600px 1100px, 1200px 900px, 240% 240%;
     }
 
-    /* Layout utilities (match index spacing) */
-    .container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-    .grid{display:grid;gap:22px;grid-template-columns:repeat(12,minmax(0,1fr))}
+    /* utilities */
+    .container{ max-width:var(--maxw); margin:0 auto; padding:0 28px } /* a bit more side padding */
+    .grid{ display:grid; gap:22px; grid-template-columns:repeat(12, minmax(0,1fr)) } /* was 18px */
     @media (min-width:760px){
-      .col-8{grid-column:span 8}
-      .col-4{grid-column:span 4}
-      .col-6{grid-column:span 6}
-      .col-12{grid-column:span 12}
+      .half{ grid-column:span 6 }
+      .third{ grid-column:span 4 }
+      .col-8{ grid-column:span 8 }
+      .col-4{ grid-column:span 4 }
+      .col-6{ grid-column:span 6 }
+      .col-12{ grid-column:span 12 }
     }
-    @media (max-width:759px){ .col-8,.col-4,.col-6,.col-12{grid-column:span 12} }
-    .muted{color:var(--muted)}
+    @media (max-width:759px){
+      .half,.third,.col-8,.col-4,.col-6,.col-12{ grid-column:span 12 }
+    }
+    .muted{ color:var(--muted) }
+    .section{ padding:80px 0 } /* was 60px */
+    h1,h2,h3{ font-weight:700; letter-spacing:-0.01em }
+    h1{ font-size:clamp(34px, 5.4vw, 56px); line-height:1.08; margin:0 0 12px } /* more margin under h1 */
+    h2.section-title{ font-size:22px; margin:0 0 16px; letter-spacing:.2px }
 
-    /* Header identical vibe to index */
+    /* accessibility */
+    .skip{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden }
+    .skip:focus{ left:16px; top:16px; padding:8px 12px; background:var(--panel); border-radius:10px; outline:2px solid var(--accent) }
+
+    /* header */
     header{
       position:sticky; top:0; z-index:10;
       backdrop-filter:saturate(180%) blur(10px);
       background:color-mix(in oklab, var(--bg) 85%, transparent);
       border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent);
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-    .brand{display:inline-flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px;text-decoration:none;color:var(--text)}
-    .logo{width:32px;height:32px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 18px 2px rgba(18,251,210,.25)}
-    nav a{padding:8px 12px;border-radius:10px;font-weight:600;color:var(--muted);text-decoration:none}
-    nav a:hover,nav a:focus{color:var(--text);background:color-mix(in oklab,var(--panel) 70%, transparent);outline:none}
+    .nav{ display:flex; align-items:center; justify-content:space-between; height:68px }
+    .brand{ display:inline-flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px; text-decoration:none; color:var(--text) }
+    .logo{ width:32px; height:32px; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 18px 2px var(--shadow-2) }
+    nav a{ padding:8px 12px; border-radius:10px; font-weight:600; color:var(--muted); text-decoration:none }
+    nav a:hover,nav a:focus{ color:var(--text); background:color-mix(in oklab, var(--panel) 70%, transparent); outline:none }
 
-    /* Page sections */
-    main{padding:60px 0 80px}
-    .kicker{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-    .headline{font-size:clamp(28px,4.5vw,42px);line-height:1.08;margin:6px 0 6px;letter-spacing:-.01em}
-    .deck{font-size:1.05rem;color:var(--muted);margin:6px 0 16px}
-    .byline{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:.95rem;color:var(--muted)}
-    .byline time{opacity:.9}
-    .meta-dot::before{content:"•";margin:0 8px;opacity:.6}
-
-    /* Cards / panels */
-    .panel{background:var(--panel);border:1px solid color-mix(in oklab,var(--text) 8%, transparent);border-radius:var(--radius)}
-    .panel.pad{padding:22px}
-    .panel:hover{box-shadow:0 0 0 1px color-mix(in oklab,var(--ring) 50%, transparent),0 10px 30px rgba(0,0,0,.18)}
-
-    /* Lead image as real <img> (no CLS) */
-    figure.lead{
-      margin:0; width:100%;
-      border-radius:16px; overflow:hidden;
-      border:1px solid color-mix(in oklab,var(--text) 8%, transparent);
-      background:linear-gradient(135deg, rgba(125,211,252,.1), rgba(34,197,94,.12));
+    /* glass hero card — roomier padding */
+    .glass-wrap{ display:grid; place-items:center; padding:72px 24px 96px } /* was 48 24 64 */
+    .glass-card{
+      width:min(980px,92vw);
+      background:var(--card-bg);
+      border:1px solid var(--card-border);
+      border-radius:20px;
+      padding:40px; /* was 28px */
+      box-shadow:0 20px 60px var(--shadow-1), 0 0 0 1px rgba(255,255,255,0.02) inset, 0 0 36px 4px var(--shadow-2);
+      backdrop-filter: blur(10px) saturate(120%);
     }
-    figure.lead img{
-      display:block; width:100%; height:auto; /* responsive */
-      aspect-ratio: 1200 / 630;               /* reserve space if width/height omitted */
+    .glass-card .lead{ color:var(--muted); font-size:clamp(15px,2.4vw,18px); margin:0 0 18px } /* add bottom space */
+
+    /* NEW: primary CTA row (separate from socials) */
+    .cta-row{
+      display:flex; gap:14px; flex-wrap:wrap;
+      margin: 8px 0 10px;
     }
-    figcaption{color:var(--muted);font-size:.9rem;margin-top:6px}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 16px; border-radius:12px; font-weight:800;
+      border:1px solid color-mix(in oklab,var(--text) 10%, transparent);
+      background:color-mix(in oklab,var(--panel) 60%, transparent);
+      color:var(--text); text-decoration:none
+    }
+    .btn:hover{ background:color-mix(in oklab,var(--panel) 90%, transparent) }
+    .btn.primary{ background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#001018; border-color:transparent }
+    .btn.primary:hover{ filter:brightness(1.05) }
+    .btn-lg{ padding:14px 20px; font-size:1rem; } /* slightly larger primary CTA */
 
-    /* Sidebar / river */
-    .side-list{list-style:none;padding:0;margin:0}
-    .side-list li{padding:10px 0;border-bottom:1px solid color-mix(in oklab,var(--text) 8%, transparent)}
-    .side-list li:last-child{border-bottom:none}
-    .tag-pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid color-mix(in oklab,var(--text) 12%, transparent);font-size:.85rem;margin:4px 6px 0 0;color:var(--muted)}
-    .river-card{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
-    .thumb{width:100%;aspect-ratio:4/3;border-radius:12px;background:linear-gradient(135deg, rgba(125,211,252,.18), rgba(34,197,94,.18));border:1px solid color-mix(in oklab,var(--text) 8%, transparent)}
-    .river-card h3{margin:0 0 4px;font-size:1.02rem}
-    .river-card p{margin:0;color:var(--muted);font-size:.95rem}
-    @media (max-width:540px){ .river-card{grid-template-columns:1fr} }
+    /* about grid — looser */
+    .about-grid{ display:grid; grid-template-columns:1fr; gap:24px; margin-top:28px } /* was 16px/22px */
+    @media (min-width:880px){ .about-grid{ grid-template-columns:1.4fr .9fr } }
+    .about-panel{ background:rgba(0,0,0,0.16); border:1px solid rgba(255,255,255,0.10); border-radius:16px; padding:20px 20px 16px }
+    .about-panel h3{ margin:0 0 10px 0; font-size:18px }
+    .about-panel p{ margin:0 0 12px 0; color:var(--muted) }
 
-    /* Footer */
-    footer{border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent);padding:28px 0 64px;color:var(--muted)}
-    .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    /* NEW: subtle divider to separate content blocks */
+    .divider{
+      height:1px; width:100%;
+      background: color-mix(in oklab, var(--text) 10%, transparent);
+      margin: 18px 0 8px;
+      border:0;
+    }
+
+    /* NEW: compact social row with circular icon buttons */
+    .connect{ display:flex; align-items:center; gap:12px; margin-top:10px; flex-wrap:wrap }
+    .connect .label{ color:var(--muted); font-weight:600; font-size:.95rem; margin-right:4px }
+    .icon-btn{
+      width:44px; height:44px; /* meets modern target-size guidance */
+      display:inline-flex; align-items:center; justify-content:center;
+      border-radius:999px;
+      background:var(--btn-bg);
+      border:1px solid rgba(255,255,255,0.12);
+      color:var(--text); text-decoration:none;
+    }
+    .icon-btn:hover{ background:var(--btn-bg-hover) }
+    .icon-btn svg{ width:20px; height:20px; }
+
+    /* footer */
+    footer{ border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent); padding:28px 0 64px; color:var(--muted) }
+
+    /* focus */
+    :where(a,button,.btn,.icon-btn):focus-visible{ outline:2px solid var(--accent); outline-offset:2px }
   </style>
 
+  <!-- Article structured data (unchanged) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -138,97 +176,117 @@
     "headline": "The Ouroboros Problem: When AI Starts Eating Its Own Tail",
     "datePublished": "2025-10-30T12:00:00-07:00",
     "dateModified": "2025-10-30T12:00:00-07:00",
-    "author": {"@type":"Person","name":"William Furtado"},
+    "author": { "@type": "Person", "name": "William Furtado" },
     "publisher": {
       "@type": "Organization",
       "name": "Freethought",
-      "logo": {"@type":"ImageObject","url":"https://freethought.me/Freethought_small.png"}
+      "logo": { "@type": "ImageObject", "url": "https://freethought.me/Freethought_small.png" }
     },
-    "image": "https://freethought.me/AIOuroboros.png",
-    "description": "As AI-generated content floods the web, newer models start learning from that content. The loop leads to sameness and, in the worst case, model collapse.",
-    "mainEntityOfPage": "https://freethought.me/blog.html"
+    "description": "As AI-generated text, images, and music fill the web, newer models start learning from that content. The loop leads to sameness and model collapse.",
+    "mainEntityOfPage": "https://freethought.me/"
   }
   </script>
 </head>
 <body>
-  <a href="#main" class="sr-only">Skip to content</a>
+  <a href="#main" class="skip">Skip to content</a>
 
   <header>
     <div class="container nav" role="navigation" aria-label="Primary">
       <a class="brand" href="/index.html" aria-label="Freethought home">
         <img class="logo" src="/Freethought_small.png" alt="" width="64" height="64" decoding="async" fetchpriority="high" />
-        <span>Freethought<span style="color:var(--accent)">.me</span></span>
+        <span>Freethought<span style="color:#0A64BC ">.me</span></span>
       </a>
       <nav>
-        <a href="/about.html" aria-current="page">About Us</a>
+      <nav>
+        <a href="/index.html" aria-current="page">Home</a>
+        <a href="/blog.html">Blog</a>
+        <a href="mailto:williamefurtado@gmail.com">Contact</a>
       </nav>
+    </nav>
     </div>
   </header>
+  <main id="main">
+    <!-- ABOUT (glass card + panels) -->
+    <section id="about" class="section">
+      <div class="glass-wrap">
+        <section class="glass-card" aria-label="About Freethought">
+          <div class="kicker"></div>
+          <h1>2B models. Sharp tooling.<span style="color:#0A64BC "> Provable results.</span></h1>
+          <p class="lead">
+            We are a small AI consultancy delivering precise tooling and competitive custom models at high efficiency.
+            We build models like <strong>FreethoughtGPT</strong> using our in-house training pipelines, then stress-test with a rigorous bank of real tasks.
+          </p>
 
-  <main id="main" class="container">
-    <section class="grid" aria-label="Top story">
-      <article class="col-8">
-        <div class="panel pad">
-          <div class="kicker">Analysis</div>
-          <h1 class="headline">The Ouroboros Problem: When AI Starts Eating Its Own Tail</h1>
-          <p class="deck">As AI-generated words, images, and music flood the web, newer models begin to learn from the output of older ones. The result is sameness, stagnation, and, in the worst case, model collapse.</p>
-
-          <div class="byline">
-            <span>By <strong>William Furtado</strong></span>
-            <span class="meta-dot"></span>
-            <time datetime="2025-10-30">October 30, 2025</time>
-            <span class="meta-dot"></span>
-            <span>6 min read</span>
+          <!-- NEW: Primary CTA separated from socials -->
+          <div class="cta-row">
+            <a class="btn primary btn-lg" href="mailto:williamefurtado@gmail.com" title="Email William">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 13L2 6h20l-10 7zm0 2l-10-7v10h20V8l-10 7z"/></svg>
+              Email
+            </a>
           </div>
+          <div class="about-grid">
+            <div class="about-panel">
+              <h3><span style="color:#0A64BC ">What we do</h3>
+              <p>
+                • Custom creation of datasets with strict quality gates.<br />
+                • Evaluation harnesses with clear, precise metrics.<br />
+                • Training that prefers efficiency over wasted compute.<br />
+                • Strong, portable Models that can be integrated anywhere.
+              </p>
+              <hr class="divider" />
+              <br>
+              <!-- NEW: Socials moved into a compact professional “Connect” row -->
+              <div class="connect" aria-label="Social links">
+                <span class="label">Connect</span>
 
-          <figure class="lead">
-            <img src="/AIOuroboros.png"
-                 alt="The Ouroboros side by side with a OpenAI logo."
-                 width="1200" height="630" decoding="async" fetchpriority="high" />
-          </figure>
+                <a class="icon-btn" href="https://github.com/R0U5" target="_blank" rel="noopener" aria-label="GitHub">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.3 11.6.6.1.8-.3.8-.6v-2c-3.4.8-4-1.6-4-1.6-.6-1.5-1.4-1.9-1.4-1.9-1.2-.8.1-.8.1-.8 1.4.1 2.1 1.5 2.1 1.5 1.2 2.1 3.1 1.5 3.8 1.1.1-.9.5-1.5.8-1.8-2.7-.3-5.6-1.4-5.6-6.1 0-1.4.5-2.6 1.3-3.5-.1-.3-.6-1.7.1-3.4 0 0 1.1-.4 3.6 1.3a12.1 12.1 0 0 1 6.6 0c2.5-1.7 3.6-1.3 3.6-1.3.7 1.7.2 3.1.1 3.4.8.9 1.3 2.1 1.3 3.5 0 4.7-2.9 5.8-5.6 6.1.4.3.8 1 .8 2.1v3.1c0 .3.2.8.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/>
+                  </svg>
+                </a>
 
-          <div class="article-body" style="margin-top:16px">
-            <article>
-            <p>&ldquo;Don’t worry, the Ouroboros of AI is slowly eating itself,&rdquo; my tweet said. The image is vivid, and the risk is real. As editors, creators, and media platforms route more content through AI filters, newer models begin to learn from older models’ output. The loop tightens. The result is not superintelligence; it is sameness and a slow degradation of signal.</p>
+                <a class="icon-btn" href="https://x.com/williamefurtado" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M18.3 2h3.2l-7 8.1 8.2 11.9H16l-5.1-6.7-5.8 6.7H1.9l7.5-8.7L1.5 2h6.5l4.6 6.1L18.3 2Zm-2.3 19.3h1.8L8.1 4.6H6.2l9.8 16.7Z"/>
+                  </svg>
+                </a>
 
-            <p>This problem stems from a few trends. First, synthetic content is cheap and everywhere, while the stock of clean, licensed human data is limited. Datasets; which are the key to training a model; are increasingly built from other models’ output. Go one layer deeper and you reach a world where AI trains on AI, where learning is relational and exponential, but also increasingly artificial. As people rely on AI to generate data and then use AI again to filter human data, a degradation loop begins. Each iteration becomes more warped, less understood, and more corrupted.</p>
+                <a class="icon-btn" href="https://www.buymeacoffee.com/williameful" target="_blank" rel="noopener" aria-label="Buy Me a Coffee">
+                  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M6.898 0L5.682 2.799H3.877v2.523h.695L5.277 9.8H4.172l1.46 8.23.938-.01L7.512 24h8.918l.062-.4.88-5.58.888.01 1.46-8.231h-1.056l.705-4.477h.756V2.8h-1.918L16.99 0H6.898zm.528.805h9.043l.771 1.78H6.652l.774-1.78zm-2.75 2.797H19.32v.92H4.676v-.92zm.453 6.998h13.635l-1.176 6.62-5.649-.06-5.636.06-1.174-6.62z"/>
+                  </svg>
+                </a>
+                <!-- Hugging Face -->
+                <a class="icon-btn" href="https://huggingface.co/R0U5" target="_blank" rel="noopener" aria-label="Hugging Face">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" role="img">
+                    <path fill="currentColor" d="M25.777 19.183c.504.374 1.21-.6.966-1.029c-2.452-4.251-5.342-6.084-7.831-5.646c-2.488.438-4.576 3.15-5.427 7.983c-.081.486.915 1.161 1.262.637c1.304-1.972 3.101-2.98 5.097-3.333c2-.353 4.034-.019 5.933 1.388"></path>
+                    <path fill="currentColor" d="M34.177 17.702c1.304-1.972 3.099-2.98 5.099-3.334c2-.353 4.032-.018 5.932 1.389c.504.374 1.212-.6.968-1.029c-2.454-4.25-5.342-6.085-7.831-5.646c-2.488.438-4.576 3.15-5.427 7.983c-.086.487.912 1.161 1.259.637"></path>
+                    <path fill="currentColor" d="M44.231 27.729c.415-1.065-.546-1.97-1.303-1.214c-6.318 6.294-14.319 7.675-22.361 3.942c-.968-.451-1.563.728-.809 1.586c2.817 3.213 7.788 5.635 13.435 4.64c5.645-.995 9.488-4.97 11.038-8.954"></path>
+                    <path fill="currentColor" d="M61.945 48.302c-.293-2.939-1.868-5.457-4.293-7.103A27.86 27.86 0 0 0 60 30.001C60 14.536 47.464 2 32 2S4 14.536 4 30.001c0 3.984.847 7.768 2.348 11.198c-2.425 1.646-4 4.163-4.293 7.103c-.4 4.021 1.44 8.654 4.28 10.773c3.243 2.42 10.667 3.756 17.938 2.357c3.639-.7 4.203-2.665 3.385-3.782c1.416.223 2.863.35 4.342.35s2.926-.127 4.342-.35c-.818 1.117-.254 3.082 3.385 3.782c7.271 1.398 14.695.063 17.938-2.357c2.84-2.119 4.681-6.752 4.28-10.773M23.34 60.12c-7.296 1.017-13.241-.036-16.071-2.147C3.198 54.934.739 45.008 8.737 41.25c3.643-1.712 9.539-3.189 10.411-1.18c1.249 2.879-4.183 3.245-4.183 3.245s4.354.628 10.73-.122c1.739-.202 2.987 1.918.927 3.141c-1.801 1.069-7.864 1.452-7.864 1.452s3.263.104 7.895-.279c3.729-.311 4.062 3.901-.856 4.476c-1.894.222-7.008.563-7.008.563s3.526.661 7.168.148c3.253-.458 3.108 2.839-1.523 3.449c-2.205.291-5.721.352-5.721.352s3.158.544 4.878.319c4.405-.579 3.948 2.72-.251 3.306m5.832-4.795c.577-.991.313-2.133-.582-2.623c3.737-1.139 2.705-5.688-.219-5.842c2.235-1.475.334-5.107-2.361-4.656c-2.299.385-6.287.379-6.287.379c.006-.01 1.283-.514.96-2.193c-.335-1.735-2.643-4.176-12.114-.367A25.306 25.306 0 0 1 6.5 30.001C6.5 15.939 17.939 4.5 32 4.5s25.5 11.439 25.5 25.501c0 3.559-.745 6.942-2.068 10.021c-9.471-3.809-11.779-1.368-12.114.367c-.323 1.68.954 2.184.96 2.193c0 0-3.988.006-6.287-.379c-2.695-.451-4.597 3.182-2.361 4.656c-2.924.154-3.956 4.703-.219 5.842c-.895.49-1.159 1.632-.582 2.623c-.931.106-1.872.176-2.829.176s-1.898-.07-2.828-.175m27.559 2.648c-2.831 2.111-8.774 3.164-16.071 2.147c-4.199-.586-4.656-3.885-.249-3.306c1.72.225 4.878-.319 4.878-.319s-3.516-.061-5.721-.352c-4.632-.61-4.776-3.907-1.523-3.449c3.642.513 7.168-.148 7.168-.148s-5.114-.342-7.008-.563c-4.918-.574-4.586-4.786-.856-4.476c4.632.383 7.895.279 7.895.279s-6.063-.383-7.864-1.452c-2.061-1.223-.813-3.343.927-3.141c6.376.75 10.729.122 10.729.122s-5.432-.366-4.183-3.245c.872-2.01 6.769-.532 10.411 1.18c7.998 3.758 5.539 13.684 1.467 16.723"></path>
+                </svg>
+                </a>
 
-            <p>You can see this when asking any GPT to draw a picture and copy it over and over. Faces blur into vague forms. Colors drift toward an unnatural yellow cast; the infamouse &ldquo;yellow &lsquo;piss filter&rsquo;&rdquo; effect. Language models show the same failure pattern in text: repeated stock phrases, cautious hedging, and flattened style. The system optimizes for what it has already seen.</p>
-
-            <h3>What creators and teams can do today</h3>
-            
-            <p>Restirct works to primary sources. Link to and quote the original when possible and don't ask AI to generate images that can be easily found. Keep a private archive of your own work and notes. Lawsuits over copywrite infringement by large AI companies are a thing and on this rise. Disclose when AI assists the process. Label and separate drafts from final human edits while supporting publications that fund original reporting, photography, and research.</p>
-
-            <h3>The path forward</h3>
-           
-           <p>Provenance, curation, and respect for the richness of human work. AI can be a useful tool, but tools need the right hand to guide them when creating.</p>
-            
-            </article>
-            
-            <div style="margin-top:12px">
-              <span class="tag-pill">AI</span>
-              <span class="tag-pill">Data Quality</span>
-              <span class="tag-pill">Synthetic Data</span>
-              <span class="tag-pill">Evaluation</span>
-              
+              </div>
+            </div>
+            <div class="about-panel">
+             <h3><span style="color:#0A64BC ">How we work</h3>
+              <p>We prefer simple, auditable code and transparent metrics. Every feature that affects training or evaluation is wired thoughtfully, with logs that explain what the system did and why.</p>
+              <i>Start fast. Ship early. Iterate: keep what improves outcomes; cut what doesn’t.</i>
             </div>
           </div>
-        </div>
-      </article>
+        </section>
+      </div>
     </section>
   </main>
-  
 
   <footer>
     <div class="container" style="text-align:center">
-      <small>© <span id="year">2025</span> Freethought.me • All rights reserved.</small>
+      <small>© <span id="year">2025</span> Freethought.me • Powered by caffeine • All rights reserved.</small>
     </div>
   </footer>
 
   <script>
-    // Update year
-    document.getElementById('year').textContent = new Date().getFullYear(); 
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
