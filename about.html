@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About me</title>
+  <meta name="description" content="About me." />
+  <link rel="canonical" href="https://freethought.me/about.html" />
+  <meta property="og:title" content="About me" />
+  <meta property="og:description" content="About me." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://freethought.me/about.html" />
+  <meta property="og:image" content="https://freethought.me/freethought-small.png" />
+  <meta name="theme-color" content="#0A64BC" />
+
+  <style>
+    :root{
+      --bg:#07080b;
+      --panel:#0f1220;
+      --text:#e7e9ee;
+      --muted:#9aa3b2;
+      --accent:#0ea5e9;
+      --accent2:#22c55e;
+      --ring:#7dd3fc;
+      --radius:18px;
+      --maxw:1120px;
+
+      --card-bg: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.14);
+      --shadow-1: rgba(0,0,0,0.35);
+      --shadow-2: rgba(18, 251, 210, 0.25);
+      --btn-bg: rgba(255,255,255,0.08);
+      --btn-bg-hover: rgba(255,255,255,0.14);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#ffffff; --panel:#f6f7fb; --text:#101420; --muted:#546073; }
+    }
+
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+
+    body{
+      margin:0;
+      font-family:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      line-height:1.65;
+      background: var(--bg);
+    }
+    body::before{
+      content:"";
+      position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:
+        radial-gradient(1200px 800px at 80% -20%, rgba(14,165,233,.14), transparent 60%),
+        radial-gradient(900px 700px at 10% -10%, rgba(10,100,188,.12), transparent 60%),
+        conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(10,100,188,.08) 55%, transparent 75%);
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      background-position: 80% -20%, 10% -10%, 80% 10%;
+      background-size: 1600px 1100px, 1200px 900px, 240% 240%;
+    }
+
+    .container{ max-width:var(--maxw); margin:0 auto; padding:0 28px }
+    .grid{ display:grid; gap:22px; grid-template-columns:repeat(12, minmax(0,1fr)) }
+    @media (min-width:860px){
+      .col-8{ grid-column:span 8 }
+      .col-4{ grid-column:span 4 }
+    }
+    @media (max-width:859px){ .col-8,.col-4{ grid-column:span 12 } }
+    .muted{ color:var(--muted) }
+    .sr-only{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden }
+
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+    }
+    .nav{ display:flex; align-items:center; justify-content:space-between; height:68px }
+    .brand{ display:inline-flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px; text-decoration:none; color:var(--text) }
+    .logo{ width:32px; height:32px; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 18px 2px var(--shadow-2) }
+    nav a{ padding:8px 12px; border-radius:10px; font-weight:600; color:var(--muted); text-decoration:none }
+    nav a:hover,nav a:focus{ color:var(--text); background:color-mix(in oklab,var(--panel) 70%, transparent); outline:none }
+
+    main{ padding:60px 0 80px }
+
+    .hero{
+      display:grid;
+      gap:18px;
+      grid-template-columns: 88px 1fr;
+      align-items:center;
+      margin: 12px 0 8px;
+    }
+    .avatar{
+      width:88px; height:88px; border-radius:16px; overflow:hidden;
+      background:linear-gradient(135deg, rgba(125,211,252,.18), rgba(34,197,94,.18));
+      border:1px solid color-mix(in oklab,var(--text) 12%, transparent);
+      display:grid; place-items:center;
+    }
+    .avatar img{ width:100%; height:100%; object-fit:cover; display:block }
+    h1{ font-size:clamp(28px,4.5vw,42px); line-height:1.08; margin:0 }
+    .lead{ color:var(--muted) }
+
+    .panel{ background:var(--panel); border:1px solid color-mix(in oklab,var(--text) 8%, transparent); border-radius:var(--radius) }
+    .pad{ padding:22px }
+    .panel:hover{ box-shadow:0 0 0 1px color-mix(in oklab,var(--ring) 50%, transparent),0 10px 30px rgba(0,0,0,.18) }
+
+    .btn{ display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; font-weight:800; border:1px solid color-mix(in oklab,var(--text) 10%, transparent); background:color-mix(in oklab,var(--panel) 60%, transparent); color:var(--text); text-decoration:none }
+    .btn:hover{ background:color-mix(in oklab,var(--panel) 90%, transparent) }
+
+    .tag{ display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid color-mix(in oklab,var(--text) 12%, transparent); font-size:.85rem; color:var(--muted); margin-right:6px; margin-top:6px }
+
+    .list{ padding-left:18px; margin: 8px 0 0 }
+    .list li{ margin:6px 0 }
+
+    footer{ border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent); padding:28px 0 64px; color:var(--muted) }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "William Furtado",
+    "url": "https://freethought.me/about.html",
+    "image": "https://freethought.me/freethought-small.png",
+    "jobTitle": "Writer & Technical Founder",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Freethought"
+    },
+    "sameAs": [
+      "https://github.com/R0U5",
+      "https://x.com/williamefurtado",
+      "https://huggingface.co/R0U5"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main" class="sr-only">Skip to content</a>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="/index.html" aria-label="Freethought home">
+        <img class="logo" src="/freethought-small.png" alt="" width="64" height="64" decoding="async" fetchpriority="high" />
+        <span>Freethought<span style="color:#0A64BC">.me</span></span>
+      </a>
+      <nav>
+        <a href="/index.html">Home</a>
+        <a href="/blog.html">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="grid">
+      <div class="col-8">
+        <div class="panel pad">
+          <div class="hero">
+            <div class="avatar">
+              <img src="/hi-im-william.png" alt="Freethought mark" width="88" height="88" decoding="async" />
+            </div>
+            <div>
+              <h1>Hey, I'm William.</h1>
+              <p class="lead"></p>
+            </div>
+          </div>
+
+          <p>I run <strong>Freethought.me</strong>, and have a storng technical background with over a decade in the industry. I have developed countless tools in Python and Perl, and held a range of postions in the past, spanning
+          everything from SEO Engineer to Policy Analyst. In that time, I have seen a lot of the industry change and trends come and go.
+          <br></br>
+          <strong>I also like writing.</strong>
+          <P> It should be no suprise if you are here that I like to write, and have strong opinions. I hope you find them at the very least, engaging if not enlightening.
+  </main>
+
+  <footer>
+    <div class="container" style="text-align:center">
+      <small>© <span id="year">2025</span> Freethought.me • All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
