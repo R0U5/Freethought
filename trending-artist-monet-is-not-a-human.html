@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3198756298645695" crossorigin="anonymous"></script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>Some free thoughts.</title>
+  <meta name="description" content="Freethought Blog" />
+  
+
+  <meta property="og:title" content="Blog" />
+  <meta property="og:description" content="Opinions and analysis on all things tech." />
+  <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://freethought.me/trending-artist-monet-is-not-a-human.html" />
+  <meta property="og:image" content="/trending-artist-monet-is-not-a-human.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="/trending-artist-monet-is-not-a-human.png" />
+
+  <meta name="theme-color" content="#0A64BC" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07080b;
+      --panel:#0f1220;
+      --text:#e7e9ee;
+      --muted:#9aa3b2;
+      --accent:#0ea5e9;
+      --accent2:#22c55e;
+      --ring:#7dd3fc;;
+      --radius:18px;
+      --maxw:1120px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#ffffff; --panel:#f6f7fb; --text:#101420; --muted:#546073; }
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    /* Match index: line-height and fixed gradient layer */
+    body{
+      margin:0;
+      font-family:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      line-height:1.65;
+      background:var(--bg);
+    }
+    body::before{
+      content:"";
+      position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:
+        radial-gradient(1200px 800px at 80% -20%, rgba(14,165,233,.14), transparent 60%),
+        radial-gradient(900px 700px at 10% -10%, rgba(34,197,94,.12), transparent 60%),
+        conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(34,197,94,.08) 55%, transparent 75%);
+      background-repeat:no-repeat,no-repeat,no-repeat;
+      background-position:80% -20%,10% -10%,80% 10%;
+      background-size:1600px 1100px,1200px 900px,240% 240%;
+    }
+
+    /* Layout utilities (match index spacing) */
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+    .grid{display:grid;gap:22px;grid-template-columns:repeat(12,minmax(0,1fr))}
+    @media (min-width:760px){
+      .col-8{grid-column:span 8}
+      .col-4{grid-column:span 4}
+      .col-6{grid-column:span 6}
+      .col-12{grid-column:span 12}
+    }
+    @media (max-width:759px){ .col-8,.col-4,.col-6,.col-12{grid-column:span 12} }
+    .muted{color:var(--muted)}
+
+    /* Header identical vibe to index */
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+    .brand{display:inline-flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px;text-decoration:none;color:var(--text)}
+    .logo{width:32px;height:32px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 18px 2px rgba(18,251,210,.25)}
+    nav a{padding:8px 12px;border-radius:10px;font-weight:600;color:var(--muted);text-decoration:none}
+    nav a:hover,nav a:focus{color:var(--text);background:color-mix(in oklab,var(--panel) 70%, transparent);outline:none}
+
+    /* Page sections */
+    main{padding:60px 0 80px}
+    .kicker{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .headline{font-size:clamp(28px,4.5vw,42px);line-height:1.08;margin:6px 0 6px;letter-spacing:-.01em}
+    .deck{font-size:1.05rem;color:var(--muted);margin:6px 0 16px}
+    .byline{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:.95rem;color:var(--muted)}
+    .byline time{opacity:.9}
+    .meta-dot::before{content:"•";margin:0 8px;opacity:.6}
+
+    /* Cards / panels */
+    .panel{background:var(--panel);border:1px solid color-mix(in oklab,var(--text) 8%, transparent);border-radius:var(--radius)}
+    .panel.pad{padding:22px}
+    .panel:hover{box-shadow:0 0 0 1px color-mix(in oklab,var(--ring) 50%, transparent),0 10px 30px rgba(0,0,0,.18)}
+
+    /* Lead image as real <img> (no CLS) */
+    figure.lead{
+      margin:0; width:100%;
+      border-radius:16px; overflow:hidden;
+      border:1px solid color-mix(in oklab,var(--text) 8%, transparent);
+      background:linear-gradient(135deg, rgba(125,211,252,.1), rgba(34,197,94,.12));
+    }
+    figure.lead img{
+      display:block; width:100%; height:auto; /* responsive */
+      aspect-ratio: 1200 / 630;               /* reserve space if width/height omitted */
+    }
+    figcaption{color:var(--muted);font-size:.9rem;margin-top:6px}
+
+    /* Sidebar / river */
+    .side-list{list-style:none;padding:0;margin:0}
+    .side-list li{padding:10px 0;border-bottom:1px solid color-mix(in oklab,var(--text) 8%, transparent)}
+    .side-list li:last-child{border-bottom:none}
+    .tag-pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid color-mix(in oklab,var(--text) 12%, transparent);font-size:.85rem;margin:4px 6px 0 0;color:var(--muted)}
+    .river-card{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
+    .thumb{width:100%;aspect-ratio:4/3;border-radius:12px;background:linear-gradient(135deg, rgba(125,211,252,.18), rgba(34,197,94,.18));border:1px solid color-mix(in oklab,var(--text) 8%, transparent)}
+    .river-card h3{margin:0 0 4px;font-size:1.02rem}
+    .river-card p{margin:0;color:var(--muted);font-size:.95rem}
+    @media (max-width:540px){ .river-card{grid-template-columns:1fr} }
+
+    /* Footer */
+    footer{border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent);padding:28px 0 64px;color:var(--muted)}
+    .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  
+/* Breadcrumbs */
+.breadcrumbs { margin: 10px 0 18px; font-size:.95rem; color: var(--muted); }
+.breadcrumbs ol { list-style: none; padding: 0; margin: 0; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.breadcrumbs li { display:flex; align-items:center; gap:8px; }
+.breadcrumbs li::after { content: "/"; opacity:.5; margin-left:8px; }
+.breadcrumbs li[aria-current="page"]::after { content: ""; }
+.breadcrumbs a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted color-mix(in oklab,var(--text) 14%, transparent); }
+.breadcrumbs a:hover { color: var(--text); border-bottom-color: currentColor; }
+
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "The Ouroboros Problem: When AI Starts Eating Its Own Tail",
+    "datePublished": "2025-10-30T12:00:00-07:00",
+    "dateModified": "2025-10-30T12:00:00-07:00",
+    "author": {"@type":"Person","name":"William Furtado"},
+    "publisher": {
+      "@type": "Organization",
+      "name": "Freethought",
+      "logo": {"@type":"ImageObject","url":"https://freethought.me/freethought-small"}
+    },
+    "image": "https://freethought.me/trending-artist-monet-is-not-a-human",
+    "description": "Freethought Blog",
+    "mainEntityOfPage": "https://freethought.me/blog.html"
+  }
+  </script>  <link rel="canonical" href="https://freethought.me/trending-artist-monet-is-not-a-human.html" />
+</head>
+<body>
+  <a href="#main" class="sr-only">Skip to content</a>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="/index.html" aria-label="Freethought home">
+        <img class="logo" src="/freethought-small.png" alt="" width="64" height="64" decoding="async" fetchpriority="high" />
+        <span>Freethought<span style="color:var(--accent)">.me</span></span>
+      </a>
+      <nav>
+      <nav>
+        <a href="/index.html">Home</a>
+        <a href="/blog.html" aria-current="page">Blog</a>
+        <a href="/about.html">About Me</a>
+      </nav>
+    </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/about.html">About Me</a></li>
+        
+        <li aria-current="page">Trending Artist Monet is not Human.</li>
+      </ol>
+    </nav>
+    <section class="grid" aria-label="Top story">
+      <article class="col-8">
+        <div class="panel pad">
+          <div class="kicker">Opinion</div>
+          <h1 class="headline">Trending Artist Monet is not Human.</h1>
+          <p class="deck">Meet Xania Monet, a virtual R&B/Gospel act assembled with Suno.</p>
+
+          <div class="byline">
+            <span>By <strong>William Furtado</strong></span>
+            <span class="meta-dot"></span>
+            <time datetime="2025-10-30">November 7, 2025</time>
+            <span class="meta-dot"></span>
+            <span>7 min read</span>
+          </div>
+
+          <figure class="lead">
+            <img src="/ai-ouroboros-eating-itself-chatgpt-logo.png"
+                 alt="Meet Xania Monet, a virtual R&B/Gospel act assembled with Suno."
+                 width="1200" height="630" decoding="async" fetchpriority="high" />
+          </figure>
+
+          <div class="article-body" style="margin-top:16px">
+            <article>
+            
+            <p>Meet Xania Monet, a virtual R&B/Gospel act assembled with Suno, lyrics by Mississippi poet Telisha “Nikki” Jones. Monet (who I will refer to as the “AI” moving forward to ensure there is no misunderstanding exactly what we are talking about) just became, by Billboard’s count, the first AI act to debut on a Billboard radio airplay list, entering Adult R&B Airplay at No. 30 with “How Was I Supposed to Know?” This isn't the first time the AI has seen some success, with a previous Gospel Song getting noticed on the Host Gospel Songs charts curated by various streaming services, such as Spotify.</p>
+             
+            <p>If you are starting to be overwhelmed by the sense of irony, I would say you are not the only one. I suspect that most of these song plays are coming from Spotify playlists where the listener is not aware that the “soulful” gospel sounds landing upon their ears are not being sung by a person with conviction and faith, but rather they have been painstakingly constructed by a godless AI. If they did know, would it matter to them at all? Perhaps it would just be considered art filtered through another instrument, albeit one that has a much stronger influence on the artist and its creation compared to something like, say, the Tuba?</p>
+            
+            <p>So, are we looking at the future of Music or another AI-based clickbait headline? Copyright law still treats AI outputs as uncopyrightable without meaningful human authorship. In Monet’s case, experts say only the human-written lyrics are clearly protectable. That being the case, when an artist uses protectable material but provides it via a non-protected platform, where does it land as far as copyright is concerned? When Banksy left a mural on the wall of a private business, the private business owner was allowed to see that portion of his wall. It did not matter that Banksy did not intend for the owner to do so; it only mattered that the medium was somebody else’s.</p>
+            
+            <p> It will be interesting to see how this all plays out, given the rise of AI and its use to game the Spotify ecosystem. It will be even more interesting to see if Ms.Telisha can really grow or even maintain her numbers. The exposure here works both ways and will likely land her a few hate comments referring to her creation as “AI Slop”. All in all, I don’t think this is really something that we should consider harmful as much as it is deceptive. People may feel differently about the artist praising Jesus through the Gospel if they knew it was being done by a piece of software. Time will tell.</p>
+            
+            </article>
+            
+            <div style="margin-top:12px">
+              <span class="tag-pill">Artist</span>
+              <span class="tag-pill">Music</span>
+              <span class="tag-pill">AI</span>              
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+</main>
+  <footer>
+    <div class="container" style="text-align:center">
+      <small>© <span id="year">2025</span> Freethought.me • All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear(); 
+  </script>
+</body>
+</html>
