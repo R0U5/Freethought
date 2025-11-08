@@ -1,292 +1,153 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3198756298645695" crossorigin="anonymous"></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Freethought.me</title>
-  <meta name="description" content="LLM consulting, datasets, and tooling. Practical, fast, and transparent." />
-  <link rel="canonical" href="https://freethought.me/" />
-  <meta property="og:title" content="Freethought" />
-  <meta property="og:description" content="LLM consulting, datasets, and tooling. Practical, fast, and transparent." />
+  <title>Blog</title>
+  <meta name="description" content="Opinions and analysis on all things tech." />
+  <link rel="canonical" href="https://freethought.me/blog.html" />
+  <meta property="og:title" content="Freethought Blog" />
+  <meta property="og:description" content="Opinions and analysis on all things tech." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://freethought.me/" />
-  <meta property="og:image" content="https://freethought.me/freethought-small.png" />
-  <meta name="theme-color" content="#0ea5e9" />
-
+  <meta property="og:url" content="https://freethought.me/blog.html" />
+  <meta name="theme-color" content="#0A64BC" />
   <style>
     :root{
-      --bg:#07080b;
-      --panel:#0f1220;
-      --text:#e7e9ee;
-      --muted:#9aa3b2;
-      --accent:#0ea5e9;
-      --accent2:#22c55e;
-      --ring:#7dd3fc;
-      --radius:18px;
-      --maxw:1120px;
-
-      /* glass + controls */
-      --card-bg: rgba(255,255,255,0.06);
-      --card-border: rgba(255,255,255,0.14);
-      --shadow-1: rgba(0,0,0,0.35);
-      --shadow-2: rgba(18, 251, 210, 0.25);
-      --btn-bg: rgba(255,255,255,0.08);
-      --btn-bg-hover: rgba(255,255,255,0.14);
+      --bg:#07080b; --panel:#0f1220; --text:#e7e9ee; --muted:#9aa3b2;
+      --accent:#0ea5e9; --ring:#7dd3fc; --radius:18px; --maxw:1120px;
+      --border: color-mix(in oklab,var(--text) 10%, transparent);
     }
     @media (prefers-color-scheme: light){
-      :root{ --bg:#ffffff; --panel:#f6f7fb; --text:#101420; --muted:#546073; }
+      :root{ --bg:#ffffff; --panel:#f6f7fb; --text:#101420; --muted:#546073; --border: color-mix(in oklab,var(--text) 15%, transparent); }
     }
-
-    *{ box-sizing:border-box }
-    html,body{
-  font-family: Calibri, "Segoe UI", Candara, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
-   height:100% }
-
-    /* Base page styles — loosened line-height for readability */
+    *{ box-sizing: border-box }
+    html,body{ height:100% }
     body{
-      margin:0;
-      font-family:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color:var(--text);
-      line-height:1.65; /* was 1.55 */
-      background: var(--bg);
+      margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); line-height:1.6; background:var(--bg);
     }
-
-    /* Fixed gradient field */
     body::before{
-      content:"";
-      position:fixed; inset:0; z-index:-1; pointer-events:none;
+      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
       background:
         radial-gradient(1200px 800px at 80% -20%, rgba(14,165,233,.14), transparent 60%),
-        radial-gradient(900px 700px at 10% -10%, rgba(10,100,188,.12), transparent 60%),
-        conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(10,100,188,.08) 55%, transparent 75%);
-      background-repeat: no-repeat, no-repeat, no-repeat;
-      background-position: 80% -20%, 10% -10%, 80% 10%;
-      background-size: 1600px 1100px, 1200px 900px, 240% 240%;
+        radial-gradient(900px 700px at 10% -10%, rgba(34,197,94,.12), transparent 60%),
+        conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(34,197,94,.08) 55%, transparent 75%);
+      background-repeat:no-repeat,no-repeat,no-repeat;
+      background-position:80% -20%,10% -10%,80% 10%;
+      background-size:1600px 1100px,1200px 900px,240% 240%;
     }
-
-    /* utilities */
-    .container{ max-width:var(--maxw); margin:0 auto; padding:0 28px } /* a bit more side padding */
-    .grid{ display:grid; gap:22px; grid-template-columns:repeat(12, minmax(0,1fr)) } /* was 18px */
-    @media (min-width:760px){
-      .half{ grid-column:span 6 }
-      .third{ grid-column:span 4 }
-      .col-8{ grid-column:span 8 }
-      .col-4{ grid-column:span 4 }
-      .col-6{ grid-column:span 6 }
-      .col-12{ grid-column:span 12 }
-    }
-    @media (max-width:759px){
-      .half,.third,.col-8,.col-4,.col-6,.col-12{ grid-column:span 12 }
-    }
-    .muted{ color:var(--muted) }
-    .section{ padding:80px 0 } /* was 60px */
-    h1,h2,h3{ font-weight:700; letter-spacing:-0.01em }
-    h1{ font-size:clamp(34px, 5.4vw, 56px); line-height:1.08; margin:0 0 12px } /* more margin under h1 */
-    h2.section-title{ font-size:22px; margin:0 0 16px; letter-spacing:.2px }
-
-    /* accessibility */
-    .skip{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden }
-    .skip:focus{ left:16px; top:16px; padding:8px 12px; background:var(--panel); border-radius:10px; outline:2px solid var(--accent) }
-
-    /* header */
+    .container{ max-width:var(--maxw); margin:0 auto; padding:0 28px }
     header{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter:saturate(180%) blur(10px);
+      position:sticky; top:0; z-index:10; backdrop-filter:saturate(180%) blur(10px);
       background:color-mix(in oklab, var(--bg) 85%, transparent);
-      border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      border-bottom:1px solid var(--border);
     }
     .nav{ display:flex; align-items:center; justify-content:space-between; height:68px }
     .brand{ display:inline-flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px; text-decoration:none; color:var(--text) }
-    .logo{ width:32px; height:32px; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 18px 2px var(--shadow-2) }
+    .logo{ width:32px; height:32px; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 18px 2px rgba(18,251,210,.25) }
     nav a{ padding:8px 12px; border-radius:10px; font-weight:600; color:var(--muted); text-decoration:none }
-    nav a:hover,nav a:focus{ color:var(--text); background:color-mix(in oklab, var(--panel) 70%, transparent); outline:none }
+    nav a:hover, nav a:focus{ color:var(--text); background:color-mix(in oklab,var(--panel) 70%, transparent); outline:none }
+    main{ padding:60px 0 80px }
+    h1{ font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.2rem); margin: 10px 0 18px }
 
-    /* glass hero card — roomier padding */
-    .glass-wrap{ display:grid; place-items:center; padding:72px 24px 96px } /* was 48 24 64 */
-    .glass-card{
-      width:min(980px,92vw);
-      background:var(--card-bg);
-      border:1px solid var(--card-border);
-      border-radius:20px;
-      padding:40px; /* was 28px */
-      box-shadow:0 20px 60px var(--shadow-1), 0 0 0 1px rgba(255,255,255,0.02) inset, 0 0 36px 4px var(--shadow-2);
-      backdrop-filter: blur(10px) saturate(120%);
+    /* POSTS */
+    .posts{ display:grid; gap:22px }
+    .post{ list-style:none }
+
+    /* Entire card is clickable, but we don’t blanket-underline text */
+    .post-link{
+      display:grid; gap:18px; align-items:center;
+      grid-template-columns: minmax(260px, 360px) 1fr;
+      padding:16px; border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(12,16,32,.92), rgba(12,16,32,.70));
+      border:1px solid var(--border);
+      color: inherit; text-decoration: none;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
-    .glass-card .lead{ color:var(--muted); font-size:clamp(15px,2.4vw,18px); margin:0 0 18px } /* add bottom space */
+    .post-link:hover{ transform: translateY(-1px); box-shadow:0 20px 40px rgba(0,0,0,.30); border-color: color-mix(in oklab,var(--ring) 35%, var(--border)); }
+    .post-link:focus-visible{ outline:2px solid var(--ring); outline-offset:3px }
+    .post-link:visited .title{ opacity:.95 }
 
-    /* NEW: primary CTA row (separate from socials) */
-    .cta-row{
-      display:flex; gap:14px; flex-wrap:wrap;
-      margin: 8px 0 10px;
+    /* Thumbs always the same ratio and never distort */
+    .thumb{ aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:#0a0f1f; border:1px solid var(--border) }
+    .thumb img{ width:100%; height:100%; display:block; object-fit:cover; } /* MDN: object-fit cover */
+
+    .copy{ display:flex; flex-direction:column; gap:6px }
+    .eyebrow{ color:var(--muted); font-size:.92rem }
+    .title{ margin:0; font-weight:800; letter-spacing:.2px; line-height:1.25; font-size: clamp(1.05rem, 1rem + .4vw, 1.35rem); }
+    /* underline only on hover/focus for headline */
+    .post-link:hover .title, .post-link:focus-visible .title{
+      text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px;
     }
-    .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:12px 16px; border-radius:12px; font-weight:800;
-      border:1px solid color-mix(in oklab,var(--text) 10%, transparent);
-      background:color-mix(in oklab,var(--panel) 60%, transparent);
-      color:var(--text); text-decoration:none
-    }
-    .btn:hover{ background:color-mix(in oklab,var(--panel) 90%, transparent) }
-    .btn.primary{ background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#001018; border-color:transparent }
-    .btn.primary:hover{ filter:brightness(1.05) }
-    .btn-lg{ padding:14px 20px; font-size:1rem; } /* slightly larger primary CTA */
+    .dek{ color:var(--muted); margin:4px 0 6px; max-width: 70ch }
+    .tags{ display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:6px 0 0; list-style:none }
+    .tag{ padding:6px 10px; border-radius:999px; border:1px solid var(--border); font-size:.85rem; color:var(--muted) }
 
-    /* about grid — looser */
-    .about-grid{ display:grid; grid-template-columns:1fr; gap:24px; margin-top:28px } /* was 16px/22px */
-    @media (min-width:880px){ .about-grid{ grid-template-columns:1.4fr .9fr } }
-    .about-panel{ background:rgba(0,0,0,0.16); border:1px solid rgba(255,255,255,0.10); border-radius:16px; padding:20px 20px 16px }
-    .about-panel h3{ margin:0 0 10px 0; font-size:18px }
-    .about-panel p{ margin:0 0 12px 0; color:var(--muted) }
-
-    /* NEW: subtle divider to separate content blocks */
-    .divider{
-      height:1px; width:100%;
-      background: color-mix(in oklab, var(--text) 10%, transparent);
-      margin: 18px 0 8px;
-      border:0;
+    @media (max-width: 900px){
+      .post-link{ grid-template-columns: 1fr }
     }
 
-    /* NEW: compact social row with circular icon buttons */
-    .connect{ display:flex; align-items:center; gap:12px; margin-top:10px; flex-wrap:wrap }
-    .connect .label{ color:var(--muted); font-weight:600; font-size:.95rem; margin-right:4px }
-    .icon-btn{
-      width:44px; height:44px; /* meets modern target-size guidance */
-      display:inline-flex; align-items:center; justify-content:center;
-      border-radius:999px;
-      background:var(--btn-bg);
-      border:1px solid rgba(255,255,255,0.12);
-      color:var(--text); text-decoration:none;
-    }
-    .icon-btn:hover{ background:var(--btn-bg-hover) }
-    .icon-btn svg{ width:20px; height:20px; }
-
-    /* footer */
-    footer{ border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent); padding:28px 0 64px; color:var(--muted) }
-
-    /* focus */
-    :where(a,button,.btn,.icon-btn):focus-visible{ outline:2px solid var(--accent); outline-offset:2px }
+    footer{ border-top:1px solid var(--border); padding:28px 0 64px; color:var(--muted) }
   </style>
-
-  <!-- Article structured data (unchanged) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    "headline": "The Ouroboros Problem: When AI Starts Eating Its Own Tail",
-    "datePublished": "2025-10-30T12:00:00-07:00",
-    "dateModified": "2025-10-30T12:00:00-07:00",
-    "author": { "@type": "Person", "name": "William Furtado" },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Freethought",
-      "logo": { "@type": "ImageObject", "url": "https://freethought.me/freethought-small.png" }
-    },
-    "description": "As AI-generated text, images, and music fill the web, newer models start learning from that content. The loop leads to sameness and model collapse.",
-    "mainEntityOfPage": "https://freethought.me/"
-  }
-  </script>
 </head>
 <body>
-  <a href="#main" class="skip">Skip to content</a>
-
   <header>
     <div class="container nav" role="navigation" aria-label="Primary">
       <a class="brand" href="/index.html" aria-label="Freethought home">
-        <img class="logo" src="/freethought-small.png" alt="" width="64" height="64" decoding="async" fetchpriority="high" />
-        <span>Freethought<span style="color:#0A64BC ">.me</span></span>
+        <img class="logo" src="/freethought-small.png" alt="" width="32" height="32" decoding="async" fetchpriority="high" />
+        <span>Freethought<span style="color:#0A64BC">.me</span></span>
       </a>
       <nav>
-      <nav>
-        <a href="/index.html" aria-current="page">Home</a>
-        <a href="/blog.html">Blog</a>
-        <a href="/about.html">About Me</a>
+        <a href="/index.html">Home</a>
+        <a href="/about.html">About me</a>
       </nav>
-    </nav>
     </div>
   </header>
-  <main id="main">
-    <!-- ABOUT (glass card + panels) -->
-    <section id="about" class="section">
-      <div class="glass-wrap">
-        <section class="glass-card" aria-label="About Freethought">
-          <div class="kicker"></div>
-          <h1>2B models. Sharp tooling.<span style="color:#0A64BC "> Provable results.</span></h1>
-          <p class="lead">
-            We are a small AI consultancy delivering precise tooling and competitive custom models at high efficiency.
-            We build models like <strong>FreethoughtGPT</strong> using our in-house training pipelines, then stress-test with a rigorous bank of real tasks.
-          </p>
 
-          <!-- NEW: Primary CTA separated from socials -->
-          <div class="cta-row">
-            <a class="btn primary btn-lg" href="mailto:williamefurtado@gmail.com" title="Email William">
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 13L2 6h20l-10 7zm0 2l-10-7v10h20V8l-10 7z"/></svg>
-              Email
-            </a>
+  <main id="main" class="container">
+    <h1>Some free thoughts.</h1>
+    <section class="posts">
+
+      <article class="post">
+        <a class="post-link" href="/ai-ouroboros-is-eating-itself.html">
+          <figure class="thumb">
+            <img src="/ai-ouroboros-is-eating-itself.png" alt="Ouroboros article thumbnail" width="640" height="360" loading="lazy" decoding="async" />
+          </figure>
+          <div class="copy">
+            <div class="eyebrow">November 06, 2025 · Analysis</div>
+            <h2 class="title">The Ouroboros Problem: When AI Starts Eating Its Own Tail</h2>
+            <p class="dek">As AI-generated content floods the web, newer models learn from that content. The loop leads to sameness and, in the worst case, collapse.</p>
+            <ul class="tags">
+              <li class="tag">AI</li><li class="tag">Data</li><li class="tag">Evaluation</li>
+            </ul>
           </div>
-          <div class="about-grid">
-            <div class="about-panel">
-              <h3><span style="color:#0A64BC ">What we do</h3>
-              <p>
-                • Custom creation of datasets with strict quality gates.<br />
-                • Evaluation harnesses with clear, precise metrics.<br />
-                • Training that prefers efficiency over wasted compute.<br />
-                • Strong, portable Models that can be integrated anywhere.
-              </p>
-              <hr class="divider" />
-              <br>
-              <!-- NEW: Socials moved into a compact professional “Connect” row -->
-              <div class="connect" aria-label="Social links">
-                <span class="label">Connect</span>
-
-                <a class="icon-btn" href="https://github.com/R0U5" target="_blank" rel="noopener" aria-label="GitHub">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill="currentColor" d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.3 11.6.6.1.8-.3.8-.6v-2c-3.4.8-4-1.6-4-1.6-.6-1.5-1.4-1.9-1.4-1.9-1.2-.8.1-.8.1-.8 1.4.1 2.1 1.5 2.1 1.5 1.2 2.1 3.1 1.5 3.8 1.1.1-.9.5-1.5.8-1.8-2.7-.3-5.6-1.4-5.6-6.1 0-1.4.5-2.6 1.3-3.5-.1-.3-.6-1.7.1-3.4 0 0 1.1-.4 3.6 1.3a12.1 12.1 0 0 1 6.6 0c2.5-1.7 3.6-1.3 3.6-1.3.7 1.7.2 3.1.1 3.4.8.9 1.3 2.1 1.3 3.5 0 4.7-2.9 5.8-5.6 6.1.4.3.8 1 .8 2.1v3.1c0 .3.2.8.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/>
-                  </svg>
-                </a>
-
-                <a class="icon-btn" href="https://x.com/williamefurtado" target="_blank" rel="noopener" aria-label="X (Twitter)">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill="currentColor" d="M18.3 2h3.2l-7 8.1 8.2 11.9H16l-5.1-6.7-5.8 6.7H1.9l7.5-8.7L1.5 2h6.5l4.6 6.1L18.3 2Zm-2.3 19.3h1.8L8.1 4.6H6.2l9.8 16.7Z"/>
-                  </svg>
-                </a>
-
-                <a class="icon-btn" href="https://www.buymeacoffee.com/williameful" target="_blank" rel="noopener" aria-label="Buy Me a Coffee">
-                  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill="currentColor" d="M6.898 0L5.682 2.799H3.877v2.523h.695L5.277 9.8H4.172l1.46 8.23.938-.01L7.512 24h8.918l.062-.4.88-5.58.888.01 1.46-8.231h-1.056l.705-4.477h.756V2.8h-1.918L16.99 0H6.898zm.528.805h9.043l.771 1.78H6.652l.774-1.78zm-2.75 2.797H19.32v.92H4.676v-.92zm.453 6.998h13.635l-1.176 6.62-5.649-.06-5.636.06-1.174-6.62z"/>
-                  </svg>
-                </a>
-                <!-- Hugging Face -->
-                <a class="icon-btn" href="https://huggingface.co/R0U5" target="_blank" rel="noopener" aria-label="Hugging Face">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" role="img">
-                    <path fill="currentColor" d="M25.777 19.183c.504.374 1.21-.6.966-1.029c-2.452-4.251-5.342-6.084-7.831-5.646c-2.488.438-4.576 3.15-5.427 7.983c-.081.486.915 1.161 1.262.637c1.304-1.972 3.101-2.98 5.097-3.333c2-.353 4.034-.019 5.933 1.388"></path>
-                    <path fill="currentColor" d="M34.177 17.702c1.304-1.972 3.099-2.98 5.099-3.334c2-.353 4.032-.018 5.932 1.389c.504.374 1.212-.6.968-1.029c-2.454-4.25-5.342-6.085-7.831-5.646c-2.488.438-4.576 3.15-5.427 7.983c-.086.487.912 1.161 1.259.637"></path>
-                    <path fill="currentColor" d="M44.231 27.729c.415-1.065-.546-1.97-1.303-1.214c-6.318 6.294-14.319 7.675-22.361 3.942c-.968-.451-1.563.728-.809 1.586c2.817 3.213 7.788 5.635 13.435 4.64c5.645-.995 9.488-4.97 11.038-8.954"></path>
-                    <path fill="currentColor" d="M61.945 48.302c-.293-2.939-1.868-5.457-4.293-7.103A27.86 27.86 0 0 0 60 30.001C60 14.536 47.464 2 32 2S4 14.536 4 30.001c0 3.984.847 7.768 2.348 11.198c-2.425 1.646-4 4.163-4.293 7.103c-.4 4.021 1.44 8.654 4.28 10.773c3.243 2.42 10.667 3.756 17.938 2.357c3.639-.7 4.203-2.665 3.385-3.782c1.416.223 2.863.35 4.342.35s2.926-.127 4.342-.35c-.818 1.117-.254 3.082 3.385 3.782c7.271 1.398 14.695.063 17.938-2.357c2.84-2.119 4.681-6.752 4.28-10.773M23.34 60.12c-7.296 1.017-13.241-.036-16.071-2.147C3.198 54.934.739 45.008 8.737 41.25c3.643-1.712 9.539-3.189 10.411-1.18c1.249 2.879-4.183 3.245-4.183 3.245s4.354.628 10.73-.122c1.739-.202 2.987 1.918.927 3.141c-1.801 1.069-7.864 1.452-7.864 1.452s3.263.104 7.895-.279c3.729-.311 4.062 3.901-.856 4.476c-1.894.222-7.008.563-7.008.563s3.526.661 7.168.148c3.253-.458 3.108 2.839-1.523 3.449c-2.205.291-5.721.352-5.721.352s3.158.544 4.878.319c4.405-.579 3.948 2.72-.251 3.306m5.832-4.795c.577-.991.313-2.133-.582-2.623c3.737-1.139 2.705-5.688-.219-5.842c2.235-1.475.334-5.107-2.361-4.656c-2.299.385-6.287.379-6.287.379c.006-.01 1.283-.514.96-2.193c-.335-1.735-2.643-4.176-12.114-.367A25.306 25.306 0 0 1 6.5 30.001C6.5 15.939 17.939 4.5 32 4.5s25.5 11.439 25.5 25.501c0 3.559-.745 6.942-2.068 10.021c-9.471-3.809-11.779-1.368-12.114.367c-.323 1.68.954 2.184.96 2.193c0 0-3.988.006-6.287-.379c-2.695-.451-4.597 3.182-2.361 4.656c-2.924.154-3.956 4.703-.219 5.842c-.895.49-1.159 1.632-.582 2.623c-.931.106-1.872.176-2.829.176s-1.898-.07-2.828-.175m27.559 2.648c-2.831 2.111-8.774 3.164-16.071 2.147c-4.199-.586-4.656-3.885-.249-3.306c1.72.225 4.878-.319 4.878-.319s-3.516-.061-5.721-.352c-4.632-.61-4.776-3.907-1.523-3.449c3.642.513 7.168-.148 7.168-.148s-5.114-.342-7.008-.563c-4.918-.574-4.586-4.786-.856-4.476c4.632.383 7.895.279 7.895.279s-6.063-.383-7.864-1.452c-2.061-1.223-.813-3.343.927-3.141c6.376.75 10.729.122 10.729.122s-5.432-.366-4.183-3.245c.872-2.01 6.769-.532 10.411 1.18c7.998 3.758 5.539 13.684 1.467 16.723"></path>
-                </svg>
-                </a>
-
-              </div>
-            </div>
-            <div class="about-panel">
-             <h3><span style="color:#0A64BC ">How we work</h3>
-              <p>We prefer simple, auditable code and transparent metrics. Every feature that affects training or evaluation is wired thoughtfully, with logs that explain what the system did and why.</p>
-              <i>Start fast. Ship early. Iterate: keep what improves outcomes; cut what doesn’t.</i>
-            </div>
+        </a>
+      </article>
+      
+      <article class="post">
+        <a class="post-link" href="/trending-artist-monet-is-not-a-human.html">
+          <figure class="thumb">
+            <img src="/trending-artist-monet-is-not-a-human.png" alt="AI singer article thumbnail" width="640" height="360" loading="lazy" decoding="async" />
+          </figure>
+          <div class="copy">
+            <div class="eyebrow">November 07, 2025 · Opinion</div>
+            <h2 class="title">Trending Artist Monet is not Human.</h2>
+            <p class="dek">Meet Xania Monet, a virtual R&B/Gospel act assembled with Suno.</p>
+            <ul class="tags">
+              <li class="tag">AI</li><li class="tag">Music</li><li class="tag">Artist</li>
+            </ul>
           </div>
-        </section>
-      </div>
+        </a>
+      </article>
+
     </section>
   </main>
 
   <footer>
     <div class="container" style="text-align:center">
-      <small>© <span id="year">2025</span> Freethought.me • Powered by caffeine • All rights reserved.</small>
+      <small>© <span id="year">2025</span> Freethought.me • All rights reserved.</small>
     </div>
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
