@@ -196,7 +196,7 @@
             <span class="meta-dot"></span>
             <time datetime="2025-11-11">November 11, 2025</time>
             <span class="meta-dot"></span>
-            <span>10 min read</span>
+            <span id="reading-time">1 min read</span>
           </div>
 
           <figure class="lead">
@@ -207,7 +207,7 @@
 
           <div class="article-body" style="margin-top:16px">
             <article>
-            
+            <div class="article-body" id="post" style="margin-top:16px">
             <p>You no doubt have likely come across the above image in LinkedIn or Facebook recently, as it seems to have been picked up by the algorithm and uses a template of sorts to visualize the failings (or at least perceived failings) of the latest iteration of GPTs. It’s then usually accompanied by a post that is almost entirely created by an LLM,  often outed by the overuse of em dashes and emojis. If you have not seen one of these yet, let me assure you it is a real problem and indicative of a greater issue around the majority of people's “thoughts” that are being posted online these days. I would also suggest that the GPT is not wrong here. Is the mushroom edible? Yes. You never asked if it would kill you.</p>
             
             <p>I myself have even had the pleasure of receiving work appreciations and anniversary messages that have been haphazardly prompted into an LLM by co-workers, leading to such meaningful and impactful statements like “Congratulations on your Anniversary — 4 years is quite a feat!”, and while I do appreciate that I mean so much to them, they spent more time prompting the AI than it would have taken to just write it themselves. Regardless, I doubt my appreciation was their end goal. Apathy breeds laziness, and we are seeing it now in spades in an environment where everyone wants to be socially relevant and everyone needs to be heard, but do we really?</p>
@@ -236,6 +236,17 @@
   <script>
     // Update year
     document.getElementById('year').textContent = new Date().getFullYear(); 
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const el = document.getElementById("reading-time");
+    const post = document.getElementById("post");
+    if (!el || !post) return;
+    const text = post.innerText || post.textContent || "";
+    const words = text.trim().split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(1, Math.round(words / 200)); // ~200 wpm
+    el.textContent = `${minutes} min read`;
+  });
   </script>
 </body>
 </html>

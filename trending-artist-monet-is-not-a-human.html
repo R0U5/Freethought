@@ -194,20 +194,20 @@
           <div class="byline">
             <span>By <strong>William Furtado</strong></span>
             <span class="meta-dot"></span>
-            <time datetime="2025-10-30">November 7, 2025</time>
+            <time datetime="2025-11-11">November 11, 2025</time>
             <span class="meta-dot"></span>
-            <span>7 min read</span>
+            <span id="reading-time">1 min read</span>
           </div>
 
           <figure class="lead">
             <img src="/trending-artist-monet-is-not-a-human.png"
-                 alt="Meet Xania Monet, a virtual R&B/Gospel act assembled with Suno."
+                 alt="Xania Monet, an A.I. Musician."
                  width="1200" height="630" decoding="async" fetchpriority="high" />
           </figure>
 
           <div class="article-body" style="margin-top:16px">
             <article>
-            
+            <div class="article-body" id="post" style="margin-top:16px">
             <p>Meet Xania Monet, a virtual R&B/Gospel act assembled with Suno, lyrics by Mississippi poet Telisha “Nikki” Jones. Monet (who I will refer to as the “AI” moving forward to ensure there is no misunderstanding exactly what we are talking about) just became, by Billboard’s count, the first AI act to debut on a Billboard radio airplay list, entering Adult R&B Airplay at No. 30 with “How Was I Supposed to Know?” This isn't the first time the AI has seen some success, with a previous Gospel Song getting noticed on the Host Gospel Songs charts curated by various streaming services, such as Spotify.</p>
              
             <p>If you are starting to be overwhelmed by the sense of irony, I would say you are not the only one. I suspect that most of these song plays are coming from Spotify playlists where the listener is not aware that the “soulful” gospel sounds landing upon their ears are not being sung by a person with conviction and faith, but rather they have been painstakingly constructed by a godless AI. If they did know, would it matter to them at all? Perhaps it would just be considered art filtered through another instrument, albeit one that has a much stronger influence on the artist and its creation compared to something like, say, the Tuba?</p>
@@ -219,9 +219,10 @@
             </article>
             
             <div style="margin-top:12px">
-              <span class="tag-pill">Artist</span>
+              <span class="tag-pill">AI</span>
               <span class="tag-pill">Music</span>
-              <span class="tag-pill">AI</span>              
+              <span class="tag-pill">Artist</span>
+              
             </div>
           </div>
         </div>
@@ -237,6 +238,17 @@
   <script>
     // Update year
     document.getElementById('year').textContent = new Date().getFullYear(); 
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const el = document.getElementById("reading-time");
+    const post = document.getElementById("post");
+    if (!el || !post) return;
+    const text = post.innerText || post.textContent || "";
+    const words = text.trim().split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(1, Math.round(words / 200)); // ~200 wpm
+    el.textContent = `${minutes} min read`;
+  });
   </script>
 </body>
 </html>
