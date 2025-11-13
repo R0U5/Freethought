@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3198756298645695"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Some free thoughts.</title>
+<meta content="Freethought Blog" name="description"/>
+<meta content="Blog" property="og:title"/>
+<meta content="Opinions and analysis on all things tech." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://freethought.me/linkedin-has-a-spam-problem.html" property="og:url"/>
+<meta content="/linkedin-has-a-spam-problem.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="/linkedin-has-a-spam-problem.png" name="twitter:image"/>
+<meta content="#0A64BC" name="theme-color"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{
+      --bg:#07080b;
+      --panel:#0f1220;
+      --text:#e7e9ee;
+      --muted:#9aa3b2;
+      --accent:#0ea5e9;
+      --accent2:#22c55e;
+      --ring:#7dd3fc;;
+      --radius:18px;
+      --maxw:1120px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:##FFFFFF; --panel:#f6f7fb; --text:#101420; --muted:#546073; }
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    /* Match index: line-height and fixed gradient layer */
+    body{
+      margin:0;
+      font-family:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      line-height:1.65;
+      background:var(--bg);
+    }
+    body::before{
+      content:"";
+      position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:
+        radial-gradient(1200px 800px at 80% -20%, rgba(14,165,233,.14), transparent 60%),
+        radial-gradient(900px 700px at 10% -10%, rgba(34,197,94,.12), transparent 60%),
+        conic-gradient(from 200deg at 80% 10%, rgba(14,165,233,.08), transparent 25%, rgba(34,197,94,.08) 55%, transparent 75%);
+      background-repeat:no-repeat,no-repeat,no-repeat;
+      background-position:80% -20%,10% -10%,80% 10%;
+      background-size:1600px 1100px,1200px 900px,240% 240%;
+    }
+
+    /* Layout utilities (match index spacing) */
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+    .grid{display:grid;gap:22px;grid-template-columns:repeat(12,minmax(0,1fr))}
+    @media (min-width:760px){
+      .col-8{grid-column:span 8}
+      .col-4{grid-column:span 4}
+      .col-6{grid-column:span 6}
+      .col-12{grid-column:span 12}
+    }
+    @media (max-width:759px){ .col-8,.col-4,.col-6,.col-12{grid-column:span 12} }
+    .muted{color:var(--muted)}
+
+    /* Header identical vibe to index */
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+    .brand{display:inline-flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px;text-decoration:none;color:var(--text)}
+    .logo{width:32px;height:32px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35), 0 0 18px 2px rgba(18,251,210,.25)}
+    nav a{padding:8px 12px;border-radius:10px;font-weight:600;color:var(--muted);text-decoration:none}
+    nav a:hover,nav a:focus{color:var(--text);background:color-mix(in oklab,var(--panel) 70%, transparent);outline:none}
+
+    /* Page sections */
+    main{padding:60px 0 80px}
+    .kicker{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .headline{font-size:clamp(28px,4.5vw,42px);line-height:1.08;margin:6px 0 6px;letter-spacing:-.01em}
+    .deck{font-size:1.05rem;color:var(--muted);margin:6px 0 16px}
+    .byline{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:.95rem;color:var(--muted)}
+    .byline time{opacity:.9}
+    .meta-dot::before{content:"•";margin:0 8px;opacity:.6}
+
+    /* Cards / panels */
+    .panel{background:var(--panel);border:1px solid color-mix(in oklab,var(--text) 8%, transparent);border-radius:var(--radius)}
+    .panel.pad{padding:22px}
+    .panel:hover{box-shadow:0 0 0 1px color-mix(in oklab,var(--ring) 50%, transparent),0 10px 30px rgba(0,0,0,.18)}
+
+    /* Lead image as real <img> (no CLS) */
+    figure.lead{
+      margin:0; width:100%;
+      border-radius:16px; overflow:hidden;
+      border:1px solid color-mix(in oklab,var(--text) 8%, transparent);
+      background:linear-gradient(135deg, rgba(125,211,252,.1), rgba(34,197,94,.12));
+    }
+    figure.lead img{
+      display:block; width:100%; height:auto; /* responsive */
+    }
+    figcaption{color:var(--muted);font-size:.9rem;margin-top:6px}
+
+    /* Sidebar / river */
+    .side-list{list-style:none;padding:0;margin:0}
+    .side-list li{padding:10px 0;border-bottom:1px solid color-mix(in oklab,var(--text) 8%, transparent)}
+    .side-list li:last-child{border-bottom:none}
+    .tag-pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid color-mix(in oklab,var(--text) 12%, transparent);font-size:.85rem;margin:4px 6px 0 0;color:var(--muted)}
+    .river-card{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
+    .thumb{width:100%;aspect-ratio:4/3;border-radius:12px;background:linear-gradient(135deg, rgba(125,211,252,.18), rgba(34,197,94,.18));border:1px solid color-mix(in oklab,var(--text) 8%, transparent)}
+    .river-card h3{margin:0 0 4px;font-size:1.02rem}
+    .river-card p{margin:0;color:var(--muted);font-size:.95rem}
+    @media (max-width:540px){ .river-card{grid-template-columns:1fr} }
+
+    /* Footer */
+    footer{border-top:1px solid color-mix(in oklab,var(--text) 10%, transparent);padding:28px 0 64px;color:var(--muted)}
+    .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  
+/* Breadcrumbs */
+.breadcrumbs { margin: 10px 0 18px; font-size:.95rem; color: var(--muted); }
+.breadcrumbs ol { list-style: none; padding: 0; margin: 0; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.breadcrumbs li { display:flex; align-items:center; gap:8px; }
+.breadcrumbs li::after { content: "/"; opacity:.5; margin-left:8px; }
+.breadcrumbs li[aria-current="page"]::after { content: ""; }
+.breadcrumbs a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted color-mix(in oklab,var(--text) 14%, transparent); }
+.breadcrumbs a:hover { color: var(--text); border-bottom-color: currentColor; }
+
+  </style>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "The Ouroboros Problem: When AI Starts Eating Its Own Tail",
+    "datePublished": "2025-10-30T12:00:00-07:00",
+    "dateModified": "2025-10-30T12:00:00-07:00",
+    "author": {"@type":"Person","name":"William Furtado"},
+    "publisher": {
+      "@type": "Organization",
+      "name": "Freethought",
+      "logo": {"@type":"ImageObject","url":"https://freethought.me/freethought-small"}
+    },
+    "image": "https://freethought.me/linkedin-has-a-spam-problem",
+    "description": "Freethought Blog",
+    "mainEntityOfPage": "https://freethought.me/blog.html"
+  }
+  </script> <link href="https://freethought.me/linkedin-has-a-spam-problem.html" rel="canonical">
+</link><style>
+/* --- Like + Share (industry-standard icons) --- */
+.actions-row{display:flex;align-items:center;gap:12px;margin-top:16px}
+.icon-btn{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);transition:transform .08s ease,background .2s ease,border-color .2s ease}
+.icon-btn:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2)}
+.icon-btn:active{transform:translateY(1px)}
+.icon-btn img,.icon-btn svg{width:20px;height:20px;display:block}
+.icon-btn:focus-visible{outline:2px solid #0A64BC;outline-offset:2px}
+.like-btn{color:#e86a6a}
+.like-btn.liked svg{fill:currentColor;stroke:currentColor}
+.like-count{min-width:1ch;font-weight:500}
+.share-label{opacity:.75;margin-left:8px;margin-right:-4px}
+.icon-btn.success{box-shadow:0 0 0 2px rgba(10,100,188,.4) inset}
+@media (max-width:600px){.actions-row{gap:10px} .icon-btn{width:40px;height:40px} .icon-btn img,.icon-btn svg{width:18px;height:18px}}
+</style></head>
+<body>
+<a class="sr-only" href="#main">Skip to content</a>
+<header>
+<div aria-label="Primary" class="container nav" role="navigation">
+<a aria-label="Freethought home" class="brand" href="/index.html">
+<img alt="" class="logo" decoding="async" fetchpriority="high" height="64" src="/freethought-small.png" width="64"/>
+<span>Freethought<span style="color:var(--accent)">.me</span></span>
+</a>
+<nav>
+<nav>
+<a href="/index.html">Home</a>
+</nav>
+</nav>
+</div>
+</header>
+<main class="container" id="main">
+<nav aria-label="Breadcrumb" class="breadcrumbs">
+<ol>
+<li><a href="/index.html">Home</a></li>
+<li aria-current="page">LinkedIn has a serious problem with spam.</li>
+</ol>
+</nav>
+<section aria-label="Top story" class="grid">
+<article class="col-8">
+<div class="panel pad">
+<div class="kicker">Opinion</div>
+<h1 class="headline">LinkedIn has a serious problem with spam.</h1>
+<p class="deck">If you go looking for a job on LinkedIn these days, do it with caution.</p>
+<div class="byline">
+<span>By <strong>William Furtado</strong></span>
+<span class="meta-dot"></span>
+<time datetime="2025-11-11">November 12, 2025</time>
+<span class="meta-dot"></span>
+<span id="reading-time">5 min read</span>
+</div>
+<figure class="lead">
+<img alt="an image of an Ouroboros next to ChatGPT logo." decoding="async" fetchpriority="high" height="630" src="/linkedin-has-a-spam-problem.png" width="1200"/>
+</figure>
+<div class="article-body" style="margin-top:16px">
+<article>
+<div class="article-body" id="post" style="margin-top:16px">
+<p>LinkedIn used to feel like a slightly awkward online résumé. Now it feels like Times Square: bright, busy, and full of people trying to sell you something you did not ask for. The platform itself admits it is drowning in junk, reporting tens of millions of fake profiles and well over a hundred million pieces of scam or spam content scrubbed in a single half-year window. 
+Lionsgate Network
+ When you open your notifications, you are not “networking.” You are walking through a bazaar where half the booths are counterfeit.</p>
+<p>The scams all start to blur together. There are the fake recruiters dangling “remote roles” with oddly generic company names and no technical detail. There are the side-hustle job offers that slowly morph into “task scams,” where you are asked to “boost” an app or complete micro-tasks, get a little money, then get pressured into sending more money to unlock your “earnings.” Regulators have been flagging these task-style work-from-home scams for stealing hundreds of millions of dollars in a matter of months.
+ Sprinkle in some crypto, a fake dashboard, and a countdown timer, and people lose life savings without ever leaving their couch.</p>
+<p>And then there is the North Korean IT worker scam, which is less “guy in your DMs” and more “state-sponsored consulting firm.” For years, North Korean IT workers have been using fake names, hijacked or synthetic LinkedIn profiles, and forged paperwork to land remote jobs at Western companies. 
+ The U.S. Justice Department and FBI recently laid out how big this has gotten: workers using stolen American identities, logging in from “laptop farms” across multiple states, quietly pulling salaries from more than a hundred U.S. companies, and funneling millions of dollars back to Pyongyang while stealing source code and sensitive internal data on the side.</p>
+<p>Security researchers have also been tracking related campaigns where fake “recruiters” on LinkedIn and freelance platforms approach developers with attractive offers, then send a “coding challenge” that is actually malware. These operations, tied to North Korea-aligned groups, use polished recruiter personas, convincing interview scripts, and trojanized codebases that backdoor your machine the moment you try to impress them. It is not just about getting a paycheck; it is about getting deep into corporate networks and crypto infrastructure.</p>
+<p>All of this turns LinkedIn’s original value proposition on its head. The platform sells trust signals: mutual connections, endorsements, work history, that little green “Open to Work” banner. The scammers have learned to fake every single one of those. AI headshots, AI-written summaries, AI-generated recommendation blurbs, plus stolen resumes layered underneath. You are not looking at a person anymore; you are looking at a composite character designed to pass a 30-second vibe check.</p>
+<p>The uncomfortable truth is that LinkedIn still has real value. It is how many of us find our next role, our next collaborator, our next client. But the cost of using it in 2025 is accepting that the nice blue “Connect” button now lives in the same neighborhood as North Korean laptop farms, fake recruiters, and task-based pig-butchering schemes. The only defense we have left is to stop assuming anything on that site is real until it earns the right to be.</p>
+</div></article>
+<div style="margin-top:12px">
+<span class="tag-pill">AI</span>
+<span class="tag-pill">Data Quality</span>
+<span class="tag-pill">Artists</span>
+</div>
+      <div class="actions-row" role="group" aria-label="Like and share">
+        <button class="icon-btn like-btn" id="like-btn" aria-pressed="false" aria-label="Like this article" title="Like">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l7.78-7.78a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </button>
+        <span class="like-count" id="like-count">0</span>
+
+        <span class="share-label">Share:</span>
+
+        <a id="share-x" class="icon-btn" target="_blank" rel="noopener noreferrer" aria-label="Share on X" title="Share on X">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="#FFFFFF">
+            <path d="M3 3h4.2l5 6.2L17.9 3H21l-7.4 8.8L22 21h-4.2l-5.6-6.9L6 21H3l8.8-9.8L3 3z"/>
+          </svg>
+        </a>
+
+        <a id="share-li" class="icon-btn" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn" title="Share on LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="#FFFFFF">
+            <path d="M22.23 0H1.77C.79 0 0 .78 0 1.73v20.54C0 23.22.79 24 1.77 24h20.46c.98 0 1.77-.78 1.77-1.73V1.73C24 .78 23.21 0 22.23 0ZM7 20.45H3.9V9H7v11.45ZM5.46 7.43a1.7 1.7 0 1 1 0-3.4a1.7 1.7 0 0 1 0 3.4ZM20.45 20.45h-3.05v-5.63c0-1.34-.03-3.04-1.86-3.04c-1.86 0-2.14 1.45-2.14 2.94v5.73h-3.06V9h2.94v1.56h.04c.41-.77 1.4-1.58 2.89-1.58c3.09 0 3.69 2.04 3.69 4.68v6.79Z"/>
+          </svg>
+        </a>
+
+        <a id="share-fb" class="icon-btn" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" title="Share on Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="#FFFFFF">
+            <path d="M13 22v-8h3l1-3h-4V9c0-1 .3-2 2-2h2V4h-2c-3 0-5 1.8-5 5v2H7v3h3v8z"/>
+          </svg>
+        </a>
+
+        <a id="copy-link" href="#" class="icon-btn" aria-label="Copy link" title="Copy link">
+          <svg viewBox="0 0 24 24" fill="#FFFFFF" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1"></path>
+            <path d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const canonical = document.querySelector('link[rel="canonical"]');
+      const url   = (canonical && canonical.href) ? canonical.href : location.href;
+      const title = (document.querySelector('meta[property="og:title"]')?.content) || document.title;
+
+      const likeKey  = 'like:' + (location.pathname || title);
+      const countKey = likeKey + ':count';
+      const btn = document.getElementById('like-btn');
+      const countEl = document.getElementById('like-count');
+
+      let count = parseInt(localStorage.getItem(countKey) || '0', 10);
+      let liked = localStorage.getItem(likeKey) === '1';
+      countEl.textContent = isNaN(count) ? '0' : String(count);
+      if (liked) btn.classList.add('liked');
+
+      btn?.addEventListener('click', () => {
+        liked = !liked;
+        if (liked) { count++; localStorage.setItem(likeKey, '1'); }
+        else { count = Math.max(0, count - 1); localStorage.removeItem(likeKey); }
+        localStorage.setItem(countKey, String(count));
+        countEl.textContent = String(count);
+        btn.classList.toggle('liked', liked);
+      });
+
+      const set = (id, href) => { const a=document.getElementById(id); if (a) a.href = href; };
+      set('share-x',  'https://x.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title));
+      set('share-li', 'https://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title));
+      set('share-fb', 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url));
+
+      document.getElementById('copy-link')?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+          await navigator.clipboard.writeText(url);
+          e.currentTarget.classList.add('success');
+          setTimeout(() => e.currentTarget.classList.remove('success'), 1200);
+        } catch {}
+      });
+    });
+  </script>
+</body>
+</html>
